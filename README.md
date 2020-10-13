@@ -42,7 +42,7 @@
 10. サジェスト機能
 
 ## カタログ設計,テーブル定義書,ER図,画面遷移図,ワイヤーフレーム
-[要件定義](要件定義.xls)
+https://docs.google.com/spreadsheets/d/1ch03fl_jbUr-c-ctcRGAKrXL6jpz8dF0qjG4sVn8JeY/edit#gid=0
 
 ## 使用予定Gem
 - kaminari
