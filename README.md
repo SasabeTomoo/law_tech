@@ -39,15 +39,17 @@
 ## 「就業Termから少なくとも2つ、カリキュラム外から１つ以上」に該当する３つの機能
 3. CSV読込み機能（モジュール使用）
 5. 通知書等の出力機能（pdf又はwordファイルダウンロード機能）
-10. サジェスト機能
+10. awsデプロイ
 
 ## カタログ設計,テーブル定義書,ER図,画面遷移図,ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1ch03fl_jbUr-c-ctcRGAKrXL6jpz8dF0qjG4sVn8JeY/edit#gid=0
+https://docs.google.com/spreadsheets/d/1ch03fl_jbUr-c-ctcRGAKrXL6jpz8dF0qjG4sVn8JeY/edit#gid0
 
 ## 使用予定Gem
 - kaminari
 - mini_magick
 - rspec-rails
 - capybara
+- wicked_pdf
+- wkhtmltopdf-binary
 
-10/12　笹部
+10/13　笹部
