@@ -42,7 +42,7 @@
 10. awsデプロイ
 
 ## カタログ設計,テーブル定義書,ER図,画面遷移図,ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/154heqkuXYl_Qco1MTnRJ5tK2dXBZO35gtvh3EoBraeA/edit#gid=1558335366
+https://docs.google.com/spreadsheets/d/1GypAhQ4Or5y9hflJxRVSOBbAHbuA5WgjFk7kfOaSgnM/edit#gid=846615228
 
 ## 使用予定Gem
 - kaminari
