@@ -1,0 +1,28 @@
+<h1>ユーザー一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>カテゴリー</th>
+      <th>分野</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @samples.each do |sample| %>
+      <tr>
+        <td><%= sample.id %></td>
+        <td><%= sample.category %></td>
+        <td><%= sample.field %></td>
+        <td><%= sample.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_tag import_samples_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート" %>
+<% end %>

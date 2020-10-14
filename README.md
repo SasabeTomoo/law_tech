@@ -52,4 +52,6 @@ https://docs.google.com/spreadsheets/d/1GypAhQ4Or5y9hflJxRVSOBbAHbuA5WgjFk7kfOaS
 - wicked_pdf
 - wkhtmltopdf-binary
 - jquery-ui-rails
+- roo
+
 10/13　笹部
