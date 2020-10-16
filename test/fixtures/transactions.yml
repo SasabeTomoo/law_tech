@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  user_name: MyString
+  user_adress: MyText
+  account: MyString
+  contact_date: 2020-10-16 19:20:00
+  rent_adress: MyText
+  rent_name: MyString
+  deposit_amount: 1
+  return_date: 2020-10-16 19:20:00
+  destination: MyText
+  deadline: MyString
+
+two:
+  user: two
+  user_name: MyString
+  user_adress: MyText
+  account: MyString
+  contact_date: 2020-10-16 19:20:00
+  rent_adress: MyText
+  rent_name: MyString
+  deposit_amount: 1
+  return_date: 2020-10-16 19:20:00
+  destination: MyText
+  deadline: MyString
