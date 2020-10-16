@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adjustment: one
+  answer: MyString
+  reason: MyText
+  cost: 1
+  cost_amount: 1
+
+two:
+  adjustment: two
+  answer: MyString
+  reason: MyText
+  cost: 1
+  cost_amount: 1
