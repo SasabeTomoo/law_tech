@@ -32,6 +32,24 @@
     <%= form.text_field :cost_amount %>
   </div>
 
+  <% i = 0 %>
+  <%= form.fields_for :datails do |datail| %>
+  <% i += 1 %>
+    <h4>No.<%= i %></h4>
+    <div class="estate_form">
+    <%= datail.label :工事等の項目名 %>
+    <%= datail.text_field :item %>
+    </div>
+    <div class="estate_form">
+    <%= datail.label :金額 %>
+    <%= datail.text_field :cost %>
+    </div>
+    <div class="estate_form">
+    <%= datail.label :カテゴリー %>
+    <%= datail.text_field :category %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

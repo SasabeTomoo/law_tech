@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adjustment: one
+  item: MyText
+  cost: 1
+  category: MyText
+
+two:
+  adjustment: two
+  item: MyText
+  cost: 1
+  category: MyText

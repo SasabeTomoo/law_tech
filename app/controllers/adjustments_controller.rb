@@ -3,6 +3,7 @@ class AdjustmentsController < ApplicationController
 
   def new
     @adjustment = Adjustment.new
+    2.times { @adjustment.datails.build }
   end
   def create
     @adjustment = Adjustment.new(adjustment_params)
@@ -36,10 +37,22 @@ class AdjustmentsController < ApplicationController
   end
 
   private
+  # def adjustment_params
+  #   params.require(:adjustment).permit(:item, :cost, :category, :cost_amount, :user_id)
+  end
   def adjustment_params
-    params.require(:adjustment).permit(:item, :cost, :category, :cost_amount, :user_id)
+    params.require(:adjustment).permit(
+            :item,
+            :cost,
+            :category,
+            :cost_amount,
+            :user_id,
+            datails_attributes:[:id,
+                                :item,
+                                :cost,
+                                :dategory,
+                                :adjustment_id])
   end
   def set_adjustment
     @adjustment = Adjustment.find(params[:id])
   end
-end
