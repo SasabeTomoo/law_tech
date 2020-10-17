@@ -1,0 +1,21 @@
+
+<h3>入力内容は以下の内容になります。必要があれば、修正してください</h3>
+<%= form_with(model: @adjustment, url: adjustments_path, local: true,) do |form| %>
+<%# あくまでform_withメソッドなので、=form.//_fieldの入力フォームでは初期と同じく=でhtml上で表示させるが(でないとparameterが飛ばない)、改めて、hidden_fieldにて見えなくしている（値を書き換えられると確認の意味がないので）。そのため、別途、見えるだけの表示として、<= @twitter.content >がある。 %>
+
+  <div class="estate_form">
+  <%= form.hidden_field :item %>
+  <p>工事等の項目名<%= @adjustment.datails.item %></p>
+  </div>
+  <div class="estate_form">
+  <%= form.hidden_field :cost %>
+  <p>金額<%= @adjustment.datails.cost %></p>
+  </div>
+  <div class="estate_form">
+  <%= form.hidden_field :category %>
+  <p>カテゴリー<%= @adjustment.datails.category %></p>
+  </div>
+
+  <%= form.submit "登録する" %>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>

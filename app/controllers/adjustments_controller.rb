@@ -1,14 +1,20 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
-
+  def index
+    # lastはどうしようか迷い中（一つに絞らないとsumがおかしくなりそう）
+    adjustment_number = current_user.adjustments.ids.last
+    @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost)
+  end
   def new
+    # binding.irb
     @adjustment = Adjustment.new
-    2.times { @adjustment.datails.build }
+    3.times { @adjustment.datails.build }
   end
   def create
     @adjustment = Adjustment.new(adjustment_params)
     @adjustment.user_id = current_user.id
     # labelling = @adjustment.labellings.create(label_id: params[:label_ids])
+    render :new if params[:back]
     if @adjustment.save
       redirect_to adjustment_path(@adjustment.id), notice: "登録しました"
     else
@@ -17,8 +23,6 @@ class AdjustmentsController < ApplicationController
   end
 
   def edit
-  end
-  def index
   end
   def show
     redirect_to sessions_new_path unless logged_in?
@@ -30,6 +34,11 @@ class AdjustmentsController < ApplicationController
     else
       render :edit
     end
+  end
+  # 確認画面は実装難しいかも（ネストさせているモデルの影響？）
+  def confirm
+    @adjustment = Adjustment.new(adjustment_params)
+    render :new if @adjustment.invalid?
   end
   def destroy
     @adjustment.destroy
@@ -47,6 +56,7 @@ class AdjustmentsController < ApplicationController
             :category,
             :cost_amount,
             :user_id,
+            :back,
             datails_attributes:[:id,
                                 :item,
                                 :cost,
