@@ -32,7 +32,7 @@ class AdjustmentsController < ApplicationController
     # @adjustment.datails.build(adjustment_params[:datails_attributes])
     render :new if params[:back]
     if @adjustment.save
-      redirect_to step2_adjustments_path, notice: "登録しました"
+      redirect_to adjustment_steps_path(@adjustment), notice: "登録しました"
     else
       render :new
     end

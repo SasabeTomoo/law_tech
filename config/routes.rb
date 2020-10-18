@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
   resources :damages
-  # resources :adjustment_steps, only: [:index, :show, :update]
+  resources :adjustment_steps, only: [:index, :show, :update]
   resources :adjustments do
     collection do
-      get 'step1'
-      get 'step2'
+      post :confirm
     end
   end
   resources :transactions

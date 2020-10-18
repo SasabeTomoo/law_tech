@@ -3,8 +3,9 @@ class AdjustmentStepsController < ApplicationController
   steps :second, :third
 
   def show
-    @adjustment = current_adjustment
-    render_wizard
+    @adjustment = Adjustment.where(user_id:current_user.id).last
+    # binding.irb
+    # render_wizard
   end
 
   def update
