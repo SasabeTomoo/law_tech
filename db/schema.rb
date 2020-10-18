@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_030359) do
+ActiveRecord::Schema.define(version: 2020_10_18_105821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 2020_10_17_030359) do
     t.integer "cost_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "damage_reason"
+    t.integer "damage_cost"
+    t.float "rent_quantity"
+    t.float "my_quantity"
+    t.string "unit"
+    t.text "burden_reason"
+    t.float "burden_percentage"
+    t.integer "burden_cost"
+    t.string "equipment_name"
+    t.float "service_year"
+    t.float "first_value"
+    t.float "rent_year"
+    t.float "de_burden_percentage"
+    t.integer "degradation_cost"
     t.index ["user_id"], name: "index_adjustments_on_user_id"
   end
 
@@ -44,6 +58,20 @@ ActiveRecord::Schema.define(version: 2020_10_17_030359) do
     t.text "category", default: "4.その他", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "damage_reason"
+    t.integer "damage_cost"
+    t.float "rent_quantity"
+    t.float "my_quantity"
+    t.string "unit"
+    t.text "burden_reason"
+    t.float "burden_percentage"
+    t.integer "burden_cost"
+    t.string "equipment_name"
+    t.float "service_year"
+    t.float "first_value"
+    t.float "rent_year"
+    t.float "de_burden_percentage"
+    t.integer "degradation_cost"
     t.index ["adjustment_id"], name: "index_datails_on_adjustment_id"
   end
 

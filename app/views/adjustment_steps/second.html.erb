@@ -7,6 +7,8 @@
       <th>工事等の項目名</th>
       <th>金額</th>
       <th>カテゴリー</th>
+      <th>通常損耗に該当する理由</th>
+      <th>通常損耗反映後の金額</th>
     </tr>
   </thead>
   <% i = 0 %>
@@ -32,7 +34,15 @@
     <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
     </div>
     </td>
-  </tr>
+    <td>
+    <div class="estate_form">
+    <%= datail.text_field :damage_reason %>
+    </div>
+    </td><td>
+    <div class="estate_form">
+    <%= datail.text_field :damage_cost %>
+    </div>
+    </td>
   <% end %>
 
   <div class="actions">
@@ -41,4 +51,7 @@
   <div>
    <%= link_to 'Skip', next_wizard_path %>
  </div>
+  <div>
+    <%= link_to 'Back', previous_wizard_path %>
+  </div>
 <% end %>

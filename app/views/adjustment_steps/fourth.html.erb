@@ -5,8 +5,13 @@
     <tr>
       <th width="30px">No.</th>
       <th>工事等の項目名</th>
-      <th>金額</th>
-      <th>カテゴリー</th>
+      <th>負担範囲反映後の金額</th>
+      <th>設備の名前</th>
+      <th>耐用年数</th>
+      <th>経過年数</th>
+      <th>借りた当初の価値</th>
+      <th>負担割合</th>
+      <th>経年劣化反映後の金額</th>
     </tr>
   </thead>
   <% i = 0 %>
@@ -24,15 +29,39 @@
     </td>
     <td>
     <div class="estate_form">
-    <%= datail.text_field :cost %>
+    <%= datail.text_field :burden_cost %>
     </div>
     </td>
     <td>
     <div class="estate_form">
-    <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+    <%= datail.text_field :equipment_name %>
     </div>
     </td>
-  </tr>
+    <td>
+    <div class="estate_form">
+    <%= datail.text_field :service_year %>
+    </div>
+    </td>
+    <td>
+    <div class="estate_form">
+    <%= datail.text_field :rent_year %>
+    </div>
+    </td>
+    <td>
+    <div class="estate_form">
+    <%= datail.text_field :first_value %>
+    </div>
+    </td>
+    <td>
+    <div class="estate_form">
+    <%= datail.text_field :de_burden_percentage %>
+    </div>
+    </td>
+    <td>
+    <div class="estate_form">
+    <%= datail.text_field :degradation_cost %>
+    </div>
+    </td>
   <% end %>
 
   <div class="actions">

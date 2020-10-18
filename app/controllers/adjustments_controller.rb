@@ -45,7 +45,7 @@ class AdjustmentsController < ApplicationController
   end
   def update
     if @adjustment.update(adjustment_params)
-      render :redirect_to adjustment_steps_path, notice: "登録しました"
+      # redirect_to adjustment_steps_path(@adjustment), notice: "登録しました"
     else
       render :edit
     end
@@ -75,7 +75,21 @@ class AdjustmentsController < ApplicationController
             datails_attributes:[:id,
                                 :item,
                                 :cost,
-                                :dategory,
+                                :category,
+                                :damage_reason,
+                                :damage_cost,
+                                :rent_quantity,
+                                :my_quantity,
+                                :unit,
+                                :burden_reason,
+                                :burden_percentage,
+                                :burden_cost,
+                                :equipment_name,
+                                :service_year,
+                                :first_value,
+                                :rent_year,
+                                :de_burden_percentage,
+                                :degradation_cost,
                                 :adjustment_id])
   end
   def set_adjustment
