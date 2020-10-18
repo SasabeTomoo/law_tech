@@ -4,7 +4,7 @@ class DamagesController < ApplicationController
   end
   def new
     @damage = Damage.new
-    # binding.irb
+    binding.irb
     if params[:search].present?
       @samples = Sample.where(category: params[:search])
       @usual_samples = @samples.where(field: "usual")
@@ -16,7 +16,6 @@ class DamagesController < ApplicationController
     end
   end
   def edit
-    binding.irb
     if params[:search].present?
       @samples = Sample.where(category: params[:search])
       @usual_samples = @samples.where(field: "usual")

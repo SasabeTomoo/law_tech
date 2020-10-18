@@ -1,6 +1,7 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
   def index
+    binding.irb
     # lastはどうしようか迷い中（一つに絞らないとsumがおかしくなりそう）
     adjustment_number = current_user.adjustments.ids.last
     @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost)
@@ -21,7 +22,6 @@ class AdjustmentsController < ApplicationController
       render :new
     end
   end
-
   def edit
   end
   def show

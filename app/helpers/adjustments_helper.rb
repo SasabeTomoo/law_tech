@@ -6,4 +6,7 @@ module AdjustmentsHelper
       adjustment_path
     end
   end
+  def none_price
+    Adjustment.last.cost_amount * 0.6
+  end
 end
