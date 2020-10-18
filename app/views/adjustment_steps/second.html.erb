@@ -1,17 +1,5 @@
-
 <%= form_with(model: @adjustment, local: true ) do |form| %>
-  <% if @adjustment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  
   <table class="table">
   <thead>
     <tr>
@@ -50,4 +38,7 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  <div>
+   <%= link_to 'Skip', next_wizard_path %>
+ </div>
 <% end %>

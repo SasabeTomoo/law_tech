@@ -1,5 +1,5 @@
 
-<%= form_with(model: @adjustment, local: true ) do |form| %>
+<%= form_for @adjustment, url: adjustments_path, method: :get do |form| %>
   <% if @adjustment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>

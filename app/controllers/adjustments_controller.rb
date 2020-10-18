@@ -1,7 +1,21 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
+  def step1
+    @adjustment = Adjustment.new
+    3.times { @adjustment.datails.build }
+  end
+
+  def step2
+    # step1で入力した値をsessionに保存
+    # binding.irb
+    # session[:item] = adjustment_params[:item]
+    # session[:cost] = adjustment_params[:cost]
+    # session[:category] = adjustment_params[:category]
+    @adjustment = Adjustment.new
+    3.times { @adjustment.datails.build }
+  end
   def index
-    binding.irb
+    # binding.irb
     # lastはどうしようか迷い中（一つに絞らないとsumがおかしくなりそう）
     adjustment_number = current_user.adjustments.ids.last
     @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost)
@@ -14,10 +28,10 @@ class AdjustmentsController < ApplicationController
   def create
     @adjustment = Adjustment.new(adjustment_params)
     @adjustment.user_id = current_user.id
-    # labelling = @adjustment.labellings.create(label_id: params[:label_ids])
+    @adjustment.build_datails(adjustment_params[:datails_attributes])
     render :new if params[:back]
     if @adjustment.save
-      redirect_to adjustment_path(@adjustment.id), notice: "登録しました"
+      redirect_to adjustment_steps_path(@adjustment.id), notice: "登録しました"
     else
       render :new
     end

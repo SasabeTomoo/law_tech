@@ -1,0 +1,12 @@
+<%= form_with model: @adjustment, url: wizard_path do |form| %>
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.text_field :item %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <div>
+    <%= link_to 'Back', previous_wizard_path %>
+  </div>
+<% end %>
