@@ -1,11 +1,11 @@
 class AdjustmentStepsController < ApplicationController
   include Wicked::Wizard
-  steps :second, :third
+  steps :second, :third, :fourth, :fifth
 
   def show
     @adjustment = Adjustment.where(user_id:current_user.id).last
     # binding.irb
-    # render_wizard
+    render_wizard
   end
 
   def update

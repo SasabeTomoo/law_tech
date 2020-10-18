@@ -1,20 +1,20 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
-  def step1
-    @adjustment = Adjustment.new
-    3.times { @adjustment.datails.build }
-  end
-
-  def step2
-    # step1で入力した値をsessionに保存
-    # binding.irb
-    # session[:item] = adjustment_params[:item]
-    # session[:cost] = adjustment_params[:cost]
-    # session[:category] = adjustment_params[:category]
-    session[:datails_attributes] = adjustment_params[:datails_attributes]
-    @adjustment = Adjustment.new
-    3.times { @adjustment.datails.build }
-  end
+  # def step1
+  #   @adjustment = Adjustment.new
+  #   3.times { @adjustment.datails.build }
+  # end
+  #
+  # def step2
+  #   # step1で入力した値をsessionに保存
+  #   # binding.irb
+  #   # session[:item] = adjustment_params[:item]
+  #   # session[:cost] = adjustment_params[:cost]
+  #   # session[:category] = adjustment_params[:category]
+  #   session[:datails_attributes] = adjustment_params[:datails_attributes]
+  #   @adjustment = Adjustment.new
+  #   3.times { @adjustment.datails.build }
+  # end
   def index
     # binding.irb
     # lastはどうしようか迷い中（一つに絞らないとsumがおかしくなりそう）
@@ -45,7 +45,7 @@ class AdjustmentsController < ApplicationController
   end
   def update
     if @adjustment.update(adjustment_params)
-      redirect_to adjustment_path(@adjustment.id), notice: "編集しました"
+      render :redirect_to adjustment_steps_path, notice: "登録しました"
     else
       render :edit
     end
