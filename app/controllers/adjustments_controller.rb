@@ -7,10 +7,11 @@ class AdjustmentsController < ApplicationController
 
   def step2
     # step1で入力した値をsessionに保存
-    # binding.irb
+    binding.irb
     # session[:item] = adjustment_params[:item]
     # session[:cost] = adjustment_params[:cost]
     # session[:category] = adjustment_params[:category]
+    session[:datails_attributes] = adjustment_params[:datails_attributes]
     @adjustment = Adjustment.new
     3.times { @adjustment.datails.build }
   end
@@ -28,7 +29,7 @@ class AdjustmentsController < ApplicationController
   def create
     @adjustment = Adjustment.new(adjustment_params)
     @adjustment.user_id = current_user.id
-    @adjustment.build_datails(adjustment_params[:datails_attributes])
+    @adjustment.datails.build(adjustment_params[:datails_attributes])
     render :new if params[:back]
     if @adjustment.save
       redirect_to adjustment_steps_path(@adjustment.id), notice: "登録しました"
