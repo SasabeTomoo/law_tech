@@ -9,25 +9,25 @@
       <%= link_to '戻る', previous_wizard_path %>
     </div>
 
-    <%= form_with(model: @adjustment, local: true ) do |form| %>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th width="30px">No.</th>
-          <th>工事等の項目名</th>
-          <th>通常損耗反映後の金額</th>
-          <th>敷金精算書記載の数量</th>
-          <th>あなたが考える数量</th>
-          <th>単位</th>
-          <th>理由</th>
-          <th>負担割合</th>
-          <th>負担範囲反映後の金額</th>
-        </tr>
-      </thead>
-      <% i = 0 %>
-        <%= form.fields_for :datails do |datail| %>
-        <% i += 1 %>
+    <div>
+      <%= form_with(model: @adjustment, local: true ) do |form| %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="30px">No.</th>
+            <th>工事等の項目名</th>
+            <th>通常損耗反映後の金額</th>
+            <th>敷金精算書記載の数量</th>
+            <th>あなたが考える数量</th>
+            <th>単位</th>
+            <th>理由</th>
+            <th>負担割合</th>
+            <th>負担範囲反映後の金額</th>
+          </tr>
+        </thead>
+        <% i = 0 %>
+          <%= form.fields_for :datails do |datail| %>
+          <% i += 1 %>
           <tr>
             <td>
               <div class="estate_form">
@@ -75,31 +75,32 @@
           </td>
         <% end %>
 
-        <div class="actions">
-          <%= form.submit %>
+          <div class="actions">
+            <%= form.submit %>
+          </div>
         <% end %>
-        </div>
+      </table>
+    </div>
 
+  </main>
+  <!-- <div class="sidebar">
+    <div class="sidebar__item">
 
-</main>
-<div class="sidebar">
-  <div class="sidebar__item">
-    <!-- 中身 -->
-    <h3><< サイドバー >></h3>
-    <h5>Sign up</h5>
-    <h5>文書作成の説明</h5>
-    <h5>取引内容の入力</h5>
-    <h5>敷金精算書の入力</h5>
-    <h5>通常損耗のチェック</h5>
-    <h5>負担範囲のチェック</h5>
-    <h5>経年劣化のチェック</h5>
-    <h5>敷金返還額の確認画面</h5>
-    <h5>文書のダウンロード</h5>
-    <h5>よくある質問（Q&A）</h5>
+      <h3> << サイドバー >> </h3>
+      <h5>Sign up</h5>
+      <h5>文書作成の説明</h5>
+      <h5>取引内容の入力</h5>
+      <h5>敷金精算書の入力</h5>
+      <h5>通常損耗のチェック</h5>
+      <h5>負担範囲のチェック</h5>
+      <h5>経年劣化のチェック</h5>
+      <h5>敷金返還額の確認画面</h5>
+      <h5>文書のダウンロード</h5>
+      <h5>よくある質問（Q&A）</h5>
+    </div> -->
+    <div class="sidebar__item sidebar__item--fixed">
+      <!-- 固定・追従させたいエリア -->
+
+    </div>
   </div>
-  <div class="sidebar__item sidebar__item--fixed">
-    <!-- 固定・追従させたいエリア -->
-
-  </div>
-</div>
 </div>
