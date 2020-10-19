@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <h4>通常損耗を入力してください</h4>
 
 <div>
@@ -8,7 +9,7 @@
       <th width="30px">No.</th>
       <th>工事等の項目名</th>
       <th>金額</th>
-      <th>カテゴリー</th>
+      <!-- <th>カテゴリー</th> -->
       <th>通常損耗に該当する理由</th>
       <th>通常損耗反映後の金額</th>
     </tr>
@@ -31,14 +32,14 @@
     <%= datail.text_field :cost %>
     </div>
     </td>
-    <td>
+    <!-- <td>
     <div class="estate_form">
     <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
     </div>
-    </td>
+    </td> -->
     <td>
     <div class="estate_form">
-    <%= datail.text_field :damage_reason %>
+    <%= datail.text_field :damage_reason, id: :idolname %>
     </div>
     </td><td>
     <div class="estate_form">
