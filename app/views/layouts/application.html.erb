@@ -8,26 +8,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <%= link_to "", root_path, class: "navbar__brand navbar__mainLogo" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-md-auto align-items-center">
-            <li>
-              <%= link_to "投稿", "#", class: "btn btn-primary" %>
-            </li>
-            <li>
-              <%= link_to "", "#", class: "nav-link commonNavIcon profile-icon" %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
+  <body>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
@@ -36,8 +18,6 @@
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
       <%= link_to "敷金精算書の入力", new_adjustment_path %>
       <%= link_to "取引内容の入力", new_transaction_path %>
-      <%= link_to "敷金精算書のindex", adjustments_path %>
-      <%= link_to "PDFの書面", pdf_download_path %>
       <%= link_to "具体例のインポート（管理者用）", samples_path %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
