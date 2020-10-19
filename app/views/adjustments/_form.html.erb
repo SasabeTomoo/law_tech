@@ -1,53 +1,74 @@
+<div class="container">
+  <main class="main">
+    <!-- メインコンテンツ -->
+    <%= form_with(model: @adjustment, local: true ) do |form| %>
+    <% if @adjustment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %>
+          prohibited this post from being saved:</h2>
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<%= form_with(model: @adjustment, local: true ) do |form| %>
-  <% if @adjustment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="30px">No.</th>
+          <th>工事等の項目名</th>
+          <th>金額</th>
+        </tr>
+      </thead>
+      <% i = 0 %>
+        <%= form.fields_for :datails do |datail| %>
+        <% i += 1 %>
+          <tr>
+            <td>
+              <div class="estate_form">
+                <%= i %>
+              </div>
+            </td>
+            <td>
+              <%= datail.text_field :item %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :cost %>
+            </div>
+          </td>
+        </tr>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <table class="table">
-  <thead>
-    <tr>
-      <th width="30px">No.</th>
-      <th>工事等の項目名</th>
-      <th>金額</th>
-      <th>カテゴリー</th>
-    </tr>
-  </thead>
-  <% i = 0 %>
-  <%= form.fields_for :datails do |datail| %>
-  <% i += 1 %>
-    <tr>
-    <td>
-    <div class="estate_form">
-    <%= i %>
-    </div>
-    </td>
-    <td>
-    <%= datail.text_field :item %>
-    </div>
-    </td>
-    <td>
-    <div class="estate_form">
-    <%= datail.text_field :cost %>
-    </div>
-    </td>
-    <td>
-    <div class="estate_form">
-    <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-    </div>
-    </td>
-  </tr>
-  <% end %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </table>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
+  </main>
+  <div class="sidebar">
+    <div class="sidebar__item">
+      <!-- 中身 -->
+      <h3> << サイドバー >> </h3>
+      <h5>Sign up</h5>
+      <h5>文書作成の説明</h5>
+      <h5>取引内容の入力</h5>
+      <h5>敷金精算書の入力</h5>
+      <h5>通常損耗のチェック</h5>
+      <h5>負担範囲のチェック</h5>
+      <h5>経年劣化のチェック</h5>
+      <h5>敷金返還額の確認画面</h5>
+      <h5>文書のダウンロード</h5>
+      <h5>よくある質問（Q&A）</h5>
+    </div>
+    <div class="sidebar__item sidebar__item--fixed">
+      <!-- 固定・追従させたいエリア -->
+
+    </div>
   </div>
-<% end %>
+</div>
