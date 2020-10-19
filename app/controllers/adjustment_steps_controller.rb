@@ -5,6 +5,15 @@ class AdjustmentStepsController < ApplicationController
   def show
     @adjustment = Adjustment.where(user_id:current_user.id).last
     # binding.irb
+    if params[:search].present?
+      @samples = Sample.where(category: params[:search])
+      @usual_samples = @samples.where(field: "usual")
+      @unusual_samples = @samples.where(field: "unusual")
+    else
+      @samples = Sample.where(category: "1.床（畳、フローリング、カーペットなど）")
+      @usual_samples = @samples.where(field: "usual")
+      @unusual_samples = @samples.where(field: "unusual")
+    end
     render_wizard
   end
 
