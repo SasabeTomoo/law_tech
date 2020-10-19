@@ -7,7 +7,7 @@ $(function() {
       '破損等はしておらず、次の入居者確保のために行うものになります',
       '耐用年数等来、経年劣化による自然消耗の結果としての破損、使用不能になります',
     ];
-    $( '.reasonname' ).autocomplete({
+    $( '#idolname' ).autocomplete({
       autoFocus: true,  //テキストフィールドの値をフォーカスされたアイテムの値で置き換える
       source: places,  //サジェストのデータを呼び出す
       minLength: 0  //オートコンプリートが動作する文字数を指定

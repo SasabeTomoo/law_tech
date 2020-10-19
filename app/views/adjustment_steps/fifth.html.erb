@@ -1,6 +1,13 @@
+<div>
+  <%= link_to '次へ', next_wizard_path %>
+</div>
+<div>
+  <%= link_to '戻る', previous_wizard_path %>
+</div>
+
 <%= form_with(model: @adjustment, local: true ) do |form| %>
 
-  <table class="table">
+<table class="table">
   <thead>
     <tr>
       <th width="30px">No.</th>
@@ -10,38 +17,32 @@
     </tr>
   </thead>
   <% i = 0 %>
-  <%= form.fields_for :datails do |datail| %>
-  <% i += 1 %>
-    <tr>
-    <td>
-    <div class="estate_form">
-    <%= i %>
-    </div>
-    </td>
-    <td>
-    <%= datail.text_field :item %>
-    </div>
-    </td>
-    <td>
-    <div class="estate_form">
-    <%= datail.text_field :cost %>
-    </div>
-    </td>
-    <td>
-    <div class="estate_form">
-    <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-    </div>
-    </td>
-  </tr>
+    <%= form.fields_for :datails do |datail| %>
+    <% i += 1 %>
+      <tr>
+        <td>
+          <div class="estate_form">
+            <%= i %>
+          </div>
+        </td>
+        <td>
+          <%= datail.text_field :item %>
+        </div>
+      </td>
+      <td>
+        <div class="estate_form">
+          <%= datail.text_field :cost %>
+        </div>
+      </td>
+      <td>
+        <div class="estate_form">
+          <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+        </div>
+      </td>
+    </tr>
   <% end %>
 
   <div class="actions">
     <%= form.submit %>
-  </div>
-  <div>
-   <%= link_to 'Skip', next_wizard_path %>
- </div>
-  <div>
-    <%= link_to 'Back', previous_wizard_path %>
   </div>
 <% end %>

@@ -1,97 +1,110 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!-- サイドバー -->
+<div class="container">
+<main class="main">
+  <h1>テスト</h1><!-- メインコンテンツ -->
+</main>
+<div class="sidebar">
+  <div class="sidebar__item">
+    <h1>テスト</h1><!-- 中身 -->
+  </div>
+  <div class="sidebar__item sidebar__item--fixed">
+    <!-- 固定・追従させたいエリア -->
+  </div>
+</div>
+</div>
+
 <h4>通常損耗を入力してください</h4>
+<h4>理由の入力欄にカーソルを合わせて（クリック）、下を押すと理由のサジェストが出ます</h4>
+<div>
+  <%= link_to '次へ', next_wizard_path %>
+</div>
+<div>
+  <%= link_to '戻る', previous_wizard_path %>
+</div>
 
 <div>
-<%= form_with(model: @adjustment, local: true ) do |form| %>
+  <%= form_with(model: @adjustment, local: true ) do |form| %>
   <table class="table">
-  <thead>
-    <tr>
-      <th width="30px">No.</th>
-      <th>工事等の項目名</th>
-      <th>金額</th>
-      <!-- <th>カテゴリー</th> -->
-      <th>通常損耗に該当する理由</th>
-      <th>通常損耗反映後の金額</th>
-    </tr>
-  </thead>
-  <% i = 0 %>
-  <%= form.fields_for :datails do |datail| %>
-  <% i += 1 %>
-    <tr>
-    <td>
-    <div class="estate_form">
-    <%= i %>
+    <thead>
+      <tr>
+        <th width="30px">No.</th>
+        <th>工事等の項目名</th>
+        <th>金額</th>
+        <th>通常損耗に該当する理由</th>
+        <th>通常損耗反映後の金額</th>
+      </tr>
+    </thead>
+    <% i = 0 %>
+      <%= form.fields_for :datails do |datail| %>
+      <% i += 1 %>
+        <tr>
+          <td>
+            <div class="estate_form">
+              <%= i %>
+            </div>
+          </td>
+          <td>
+            <%= datail.text_field :item %>
+          </div>
+        </td>
+        <td>
+          <div class="estate_form">
+            <%= datail.text_field :cost %>
+          </div>
+        </td>
+        <!-- <td> <div class="estate_form"> <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' ,
+        required: true } %> </div> </td> -->
+        <td>
+          <div class="estate_form">
+            <%= datail.text_field :damage_reason, class: :reasonname %>
+          </div>
+        </td>
+        <td>
+          <div class="estate_form">
+            <%= datail.text_field :damage_cost %>
+          </div>
+        </td>
+      <% end %>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </table>
+</div>
+
+  <div>
+    <p id="notice"><%= notice %></p>
+    <%= form_with( model: @damages, method: :get, local: true ) do |form| %>
+    <div class="content">
+      <p>具体例の検索<%= form.select :search, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' } %></p>
     </div>
-    </td>
-    <td>
-    <%= datail.text_field :item %>
-    </div>
-    </td>
-    <td>
-    <div class="estate_form">
-    <%= datail.text_field :cost %>
-    </div>
-    </td>
-    <!-- <td>
-    <div class="estate_form">
-    <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-    </div>
-    </td> -->
-    <td>
-    <div class="estate_form">
-    <%= datail.text_field :damage_reason, id: :idolname %>
-    </div>
-    </td><td>
-    <div class="estate_form">
-    <%= datail.text_field :damage_cost %>
-    </div>
-    </td>
+    <%= form.submit '検索', name: nil%>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-  <div>
-   <%= link_to '次へ', next_wizard_path %>
- </div>
-  <div>
-    <%= link_to '戻る', previous_wizard_path %>
-  </div>
-<% end %>
-</div>
-
-<div>
-<p id="notice"><%= notice %></p>
-<%= form_with( model: @damages, method: :get, local: true ) do |form| %>
-  <div class="content">
-    <h8>具体例の検索</h8>
-    <p><%= form.select :search, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' } %></p>
-  </div>
-  <%= form.submit '検索', name: nil%>
-<% end %>
 </div>
 <div>
-<p><%= notice %></p>
-<table>
-  <tr>
-    <th>通常損耗の具体例</th>
-    <th colspan="3"></th>
-  </tr>
-  <% @usual_samples.each do |usual_sample| %>
-  <tr>
-    <td class="task_row"><%= usual_sample.content %></td>
-  </tr>
-<% end %>
-</table>
-<table>
-  <tr>
-    <th>超過損耗の具体例</th>
-    <th colspan="3"></th>
-  </tr>
-  <% @unusual_samples.each do |unusual_sample| %>
-  <tr>
-    <td class="task_row"><%= unusual_sample.content %></td>
-  </tr>
-<% end %>
-</table>
+  <p><%= notice %></p>
+  <table>
+    <tr>
+      <th>通常損耗の具体例</th>
+      <th colspan="3"></th>
+    </tr>
+    <% @usual_samples.each do |usual_sample| %>
+      <tr>
+        <td class="task_row"><%= usual_sample.content %></td>
+      </tr>
+    <% end %>
+  </table>
+  <table>
+    <tr>
+      <th>超過損耗の具体例</th>
+      <th colspan="3"></th>
+    </tr>
+    <% @unusual_samples.each do |unusual_sample| %>
+      <tr>
+        <td class="task_row"><%= unusual_sample.content %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
