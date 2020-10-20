@@ -10,9 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :transactions
-  resource :pdf, only: [] do
-    get :sample
-  end
+  get '/pdf-download', to: 'pdf#download', as: 'pdf_download', :format => 'pdf'
   resources :samples do
     collection { post :import }
   end
