@@ -74,3 +74,5 @@
 <h2>　　　　　　　　　　　　　　　通知人の表示</h2>
 <h2>通知人　<%= @transactions.user_name %></h2>
 <h2><%= @transactions.user_adress %></h2>
+
+<% params[:debug].present? ? image_tag('foo') : wicked_pdf_image_tag('foo') %>
