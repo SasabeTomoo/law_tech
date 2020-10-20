@@ -59,6 +59,9 @@ class AdjustmentsController < ApplicationController
     @adjustment.destroy
     redirect_to adjustments_path, notice:"削除しました"
   end
+  def calculation
+    adjustment_params.merge(@adjustment.set_extra_information)
+  end
 
   private
   # def adjustment_params
