@@ -1,9 +1,6 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
-  def top
-  end
-  def explanation1
-  end
+  
   def index
     # lastはどうしようか迷い中（一つに絞らないとsumがおかしくなりそう）
     adjustment_number = current_user.adjustments.ids.last

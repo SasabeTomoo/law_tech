@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'explains#top'
-  get  "explains/explain1"  => "explains#explain1"
+  # get   'explain1'は、HTTPメソッドのGETとURL指定
+  get   'explain1', to: 'explains#explain1'
+  get   'explain2', to: 'explains#explain2'
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
   resources :damages
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+  # get   'input1', to: 'adjustments#input1'
+  # get   'input2', to: 'adjustments#input2'
   resources :transactions
   get '/pdf-download', to: 'pdf#download', as: 'pdf_download', :format => 'pdf'
   resources :samples do
