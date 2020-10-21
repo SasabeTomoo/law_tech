@@ -1,48 +1,94 @@
-<div>
-  <%= link_to '次へ', next_wizard_path %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<div id="B">
+  <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <h5>　Sign up</h5>
+  <h5>　文書作成の説明</h5>
+  <h5>　取引内容の入力</h5>
+  <h5>　敷金精算書の入力</h5>
+  <h5>　通常損耗のチェック</h5>
+  <h5>　負担範囲のチェック</h5>
+  <h5>　経年劣化のチェック</h5>
+  <h5 id="now">　敷金返還額の確認画面</h5>
+  <h5>　文書のダウンロード</h5>
+  <h5 id="question">よくある質問（Q&A）</h5>
+ </div>
 </div>
-<div>
-  <%= link_to '戻る', previous_wizard_path %>
-</div>
 
-<%= form_with(model: @adjustment, local: true ) do |form| %>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th width="30px">No.</th>
-      <th>工事等の項目名</th>
-      <th>金額</th>
-      <th>カテゴリー</th>
-    </tr>
-  </thead>
-  <% i = 0 %>
-    <%= form.fields_for :datails do |datail| %>
-    <% i += 1 %>
-      <tr>
-        <td>
-          <div class="estate_form">
-            <%= i %>
-          </div>
-        </td>
-        <td>
-          <%= datail.text_field :item %>
-        </div>
-      </td>
-      <td>
-        <div class="estate_form">
-          <%= datail.text_field :cost %>
-        </div>
-      </td>
-      <td>
-        <div class="estate_form">
-          <%= form.select :category, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-        </div>
-      </td>
-    </tr>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
+<div id="C">
+  <div class="fusen5">
+    これまでに記入した内容を確認してね。
   </div>
-<% end %>
+  <div class="fusen5">
+    最後の「経年劣化反映後の金額」が、あなたの考える最終的な「原状回復工事の費用」になるよ、確認してね。
+  </div>
+  <div class="fusen5">
+    入力したり値を更新した場合は、「update」ボタンを押してから「次へ」を押さないと更新されないよ。
+  </div>
+  <div>
+    <%= link_to '通知書をダウンロード！', pdf_download_path %>
+  </div>
+  <div>
+    <%= link_to '戻る', previous_wizard_path %>
+  </div>
+
+  <div>
+    <%= form_with(model: @adjustment, local: true ) do |form| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="30px">No.</th>
+          <th>工事等の項目名</th>
+          <th>金額</th>
+          <th class="column">通常損耗に該当する理由</th>
+          <th class="column">通常損耗反映後の金額</th>
+          <th class="column">負担範囲反映後の金額</th>
+          <th class="column_last">経年劣化反映後の金額</th>
+        </tr>
+      </thead>
+      <% i = 0 %>
+        <%= form.fields_for :datails do |datail| %>
+        <% i += 1 %>
+          <tr>
+            <td>
+              <div class="estate_form">
+                <%= i %>
+              </div>
+            </td>
+            <td>
+              <%= datail.text_field :item %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :cost %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :damage_reason, class: :reasonname %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :damage_cost %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :burden_cost %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :degradation_cost %>
+            </div>
+          </td>
+        <% end %>
+
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </table>
+      <%= image_tag 'confirm.png', size: "300x200"%>
+  </div>
