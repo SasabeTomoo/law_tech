@@ -1,64 +1,54 @@
-<!-- サイドバー -->
-<div class="container">
-  <main class="main">
-    <!-- メインコンテンツ -->
-    <h4>敷金精算書の工事等の項目名と金額を入力してください</h4>
-    <div>
-      <%= form_with(model: @adjustment, local: true ) do |form| %>
-      <table class="table">
-        <thead>
+<div id="B">
+  <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <h5>　Sign up</h5>
+  <h5>　文書作成の説明</h5>
+  <h5>　取引内容の入力</h5>
+  <h5 id="now">　敷金精算書の入力</h5>
+  <h5>　通常損耗のチェック</h5>
+  <h5>　負担範囲のチェック</h5>
+  <h5>　経年劣化のチェック</h5>
+  <h5>　敷金返還額の確認画面</h5>
+  <h5>　文書のダウンロード</h5>
+  <h5 id="question">よくある質問（Q&A）</h5>
+ </div>
+</div>
+
+<div id="C">
+  <h4>敷金精算書の工事等の項目名と金額を入力してください</h4>
+  <div>
+    <%= form_with(model: @adjustment, local: true ) do |form| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="30px">No.</th>
+          <th>工事等の項目名</th>
+          <th>金額</th>
+        </tr>
+      </thead>
+      <% i = 0 %>
+        <%= form.fields_for :datails do |datail| %>
+        <% i += 1 %>
           <tr>
-            <th width="30px">No.</th>
-            <th>工事等の項目名</th>
-            <th>金額</th>
-          </tr>
-        </thead>
-        <% i = 0 %>
-          <%= form.fields_for :datails do |datail| %>
-          <% i += 1 %>
-            <tr>
-              <td>
-                <div class="estate_form">
-                  <%= i %>
-                </div>
-              </td>
-              <td>
-                <%= datail.text_field :item %>
+            <td>
+              <div class="estate_form">
+                <%= i %>
               </div>
             </td>
             <td>
-              <div class="estate_form">
-                <%= datail.text_field :cost %>
-              </div>
-            </td>
-          <% end %>
-
-          <div class="actions">
-            <%= form.submit %>
-          </div>
+              <%= datail.text_field :item %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :cost %>
+            </div>
+          </td>
         <% end %>
-      </table>
-    </div>
 
-  </main>
-  <div class="sidebar">
-    <div class="sidebar__item">
-      <!-- 中身 -->
-      <h3> << サイドバー >> </h3>
-      <h5>Sign up</h5>
-      <h5>文書作成の説明</h5>
-      <h5>取引内容の入力</h5>
-      <h5>敷金精算書の入力</h5>
-      <h5>通常損耗のチェック</h5>
-      <h5>負担範囲のチェック</h5>
-      <h5>経年劣化のチェック</h5>
-      <h5>敷金返還額の確認画面</h5>
-      <h5>文書のダウンロード</h5>
-      <h5>よくある質問（Q&A）</h5>
-    </div>
-    <div class="sidebar__item sidebar__item--fixed">
-      <!-- 固定・追従させたいエリア -->
-      <h5>test</h5>
-    </div>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </table>
   </div>
 </div>
