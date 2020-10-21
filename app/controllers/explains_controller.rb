@@ -1,0 +1,2 @@
+class ExplainsController < ApplicationController
+end

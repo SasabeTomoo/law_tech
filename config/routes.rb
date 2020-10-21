@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  root to: 'explains#top'
+  get  "explains/explain1"  => "explains#explain1"
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
   resources :damages
