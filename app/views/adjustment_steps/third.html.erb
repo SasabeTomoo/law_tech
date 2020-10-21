@@ -15,7 +15,21 @@
 
 <div id="C">
   <%= image_tag 'burden.png', size: "700x300"%>
-  <div class="fusen2">敷金精算書の数量を記入したうえで、あなたが考える適切な数量を記入してください</div>
+  <div class="fusen5">
+    過大な工事費用は負担する必要はないよ
+  </div>
+  <div class="fusen5">
+    過大な工事費用かどうかの判断は、下の具体例を読んでね（後に記載予定）
+  </div>
+  <div class="fusen5">
+    工事の負担範囲が過大と思った場合は、「金額（反映後）」にあなたの正しい金額を入れてね。そうでない場合は、「前のstep反映後金額」と「金額（反映後）」を同じ金額にしてね。
+  </div>
+  <div class="fusen5">
+    「金額（反映後）」に正しい金額を入れた場合は、「理由」も入力してね。
+  </div>
+  <div class="fusen5">
+    入力したり値を更新した場合は、「update」ボタンを押してから「次へ」を押さないと更新されないよ
+  </div>
   <div>
     <%= link_to '次へ', next_wizard_path %>
   </div>
@@ -30,13 +44,13 @@
         <tr>
           <th width="30px">No.</th>
           <th>工事等の項目名</th>
-          <th>通常損耗反映後の金額</th>
-          <th>敷金精算書記載の数量</th>
+          <th>前のstep反映後金額</th>
+          <!-- <th>敷金精算書の数量</th>
           <th>あなたが考える数量</th>
-          <th>単位</th>
+          <th>単位</th> -->
           <th>理由</th>
-          <th>負担割合</th>
-          <th>負担範囲反映後の金額</th>
+          <!-- <th>負担割合</th> -->
+          <th>金額（反映後）</th>
         </tr>
       </thead>
       <% i = 0 %>
@@ -57,7 +71,7 @@
               <%= datail.text_field :damage_cost %>
             </div>
           </td>
-          <td>
+          <!-- <td>
             <div class="estate_form">
               <%= datail.text_field :rent_quantity %>
             </div>
@@ -71,17 +85,17 @@
             <div class="estate_form">
               <%= datail.text_field :unit %>
             </div>
-          </td>
+          </td> -->
           <td>
             <div class="estate_form">
               <%= datail.text_field :burden_reason %>
             </div>
           </td>
-          <td>
+          <!-- <td>
             <div class="estate_form">
               <%= datail.text_field :burden_percentage %>
             </div>
-          </td>
+          </td> -->
           <td>
             <div class="estate_form">
               <%= datail.text_field :burden_cost %>

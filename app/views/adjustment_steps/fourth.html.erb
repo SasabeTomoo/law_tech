@@ -1,3 +1,4 @@
+
 <div id="B">
   <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
   <h5>　Sign up</h5>
@@ -15,12 +16,24 @@
 
 <div id="C">
   <%= image_tag 'year.png', size: "800x400"%>
-  <div class="fusen2">さっそく入力していこう。</div>
-<div>
   <%= link_to '次へ', next_wizard_path %>
-</div>
 <div>
   <%= link_to '戻る', previous_wizard_path %>
+</div>
+<div class="fusen5">
+  「前のstep反映後金額」に値が入っているものだけ、経年劣化を考えてみよう
+</div>
+<div class="fusen5">
+  「経過年数」は、基本的に、あなたの入居年数となるよ。また、耐用年数などの具体例は下を見てね（後に記載予定）
+</div>
+<div class="fusen5">
+  「経年劣化」を取り入れる場合は、次の計算をして、「金額（反映後）」に入れてね。そうでない場合は、「前のstep反映後金額」と「金額（反映後）」を同じ金額にしてね。
+</div>
+<div class="fusen5">
+  「金額（反映後）」=「前のstep反映後金額」÷「耐用年数」✖️（耐用年数　-　経過年数）✖️借りた当初の価値（例.80%など）
+</div>
+<div class="fusen5">
+  入力したり値を更新した場合は、「update」ボタンを押してから「次へ」を押さないと更新されないよ
 </div>
 
 <%= form_with(model: @adjustment, local: true ) do |form| %>
@@ -30,13 +43,13 @@
     <tr>
       <th width="30px">No.</th>
       <th>工事等の項目名</th>
-      <th>負担範囲反映後の金額</th>
+      <th>前のstep反映後金額</th>
       <th>設備の名前</th>
       <th>耐用年数</th>
       <th>経過年数</th>
       <th>借りた当初の価値</th>
-      <th>負担割合</th>
-      <th>経年劣化反映後の金額</th>
+      <!-- <th>負担割合</th> -->
+      <th>金額（反映後）</th>
     </tr>
   </thead>
   <% i = 0 %>
@@ -59,29 +72,29 @@
       </td>
       <td>
         <div class="estate_form">
-          <%= datail.text_field :equipment_name %>
+          <%= datail.text_field :equipment_name, placeholder: "クロス" %>
         </div>
       </td>
       <td>
         <div class="estate_form">
-          <%= datail.text_field :service_year %>
+          <%= datail.text_field :service_year, placeholder: 6 %>
         </div>
       </td>
       <td>
         <div class="estate_form">
-          <%= datail.text_field :rent_year %>
+          <%= datail.text_field :rent_year, placeholder: 3 %>
         </div>
       </td>
       <td>
         <div class="estate_form">
-          <%= datail.text_field :first_value %>
+          <%= datail.text_field :first_value, placeholder: 1 %>
         </div>
       </td>
-      <td>
+      <!-- <td>
         <div class="estate_form">
           <%= datail.text_field :de_burden_percentage %>
         </div>
-      </td>
+      </td> -->
       <td>
         <div class="estate_form">
           <%= datail.text_field :degradation_cost %>
