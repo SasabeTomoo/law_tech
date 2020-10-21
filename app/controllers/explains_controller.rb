@@ -5,4 +5,8 @@ class ExplainsController < ApplicationController
   end
   def explain2
   end
+  def explain3
+  end
+  def explain4
+  end
 end

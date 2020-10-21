@@ -9,21 +9,29 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <header>
+    <h1>敷金返還の支援サイト（仮名）</h1>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
     <% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <%= link_to "敷金精算書の入力", new_adjustment_path %>
+      <%= link_to "Topページ", root_path %>
+      <%= link_to "説明", explain1_path %>
       <%= link_to "取引内容の入力", new_transaction_path %>
+      <%= link_to "敷金精算書の入力", new_adjustment_path %>
       <%= link_to "通知書のPDF出力", pdf_download_path %>
       <%= link_to "具体例のインポート（管理者用）", samples_path %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
     <% end %>
+  </header>
+  <body>
     <%= yield %>
   </body>
+  <footer>
+    <a>footer</a>
+  </footer>
 </html>
