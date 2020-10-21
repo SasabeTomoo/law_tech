@@ -5,10 +5,9 @@
 <% @transactions = Transaction.where(user_id:current_user.id).last %>
 <!-- 合計の情報 -->
 <% adjustment_number = current_user.adjustments.ids.last %>
-<% @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost) %>
+<% @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:degradation_cost) %>
 
 <h2>　　　　　　　　　　　　　　敷金返還請求書</h2>
-<h2>平成〇〇年〇〇月〇〇日</h2>
 <h2><%= @transactions.rent_name %>　殿</h2>
 <h2><%= @transactions.destination %></h2>
 
@@ -21,9 +20,7 @@
 渡しは、<%= @transactions.return_date %>日に既に完了しました。ついては、本契約に基づき、
 貴殿に預けている敷金の<%= @cost_amount %>円を本状到着後<%= @transactions.deadline %>日
 以内に返還してください。
-（ 私名義〇〇銀行〇〇支店普通口座 × × × × × × へ、振り
-込んでください。）
-</h2>
+<h2>なお、振込先の口座は、従前の賃貸借契約で使用していた私名義の口座にお振込ください</h2>
 <h2>改正民法621条で「通常の使用及び収益によって生じた賃借物の損耗並びに賃借物の経年変化」（以下「通常損耗等」）が原状回復義務の範囲から明確に除外されています。</h2>
 <h2>「原状回復をめぐるガイドライン」では、家賃滞納や
 故意・過失による汚損・毀損を除いて敷金は返還するこ
@@ -68,9 +65,8 @@
 </table>
 <h2>以上、ご対応の程、よろしくお願いします</h2>
 
-<h2>　　　　　　　　　　　　　　　　　記</h2>
 <h2>　　　　　　　　　　　　　　　物件の表示</h2>
 <h2><%= @transactions.rent_adress %></h2>
-<h2>　　　　　　　　　　　　　　　通知人の表示</h2>
+<h2>〇〇年〇〇月〇〇日</h2>
 <h2>通知人　<%= @transactions.user_name %></h2>
 <h2><%= @transactions.user_adress %></h2>

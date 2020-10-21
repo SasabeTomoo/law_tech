@@ -1,6 +1,6 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     # lastはどうしようか迷い中（一つに絞らないとsumがおかしくなりそう）
     adjustment_number = current_user.adjustments.ids.last
@@ -8,7 +8,7 @@ class AdjustmentsController < ApplicationController
   end
   def new
     @adjustment = Adjustment.new
-    3.times { @adjustment.datails.build }
+    7.times { @adjustment.datails.build }
   end
   def create
     @adjustment = Adjustment.new(adjustment_params)

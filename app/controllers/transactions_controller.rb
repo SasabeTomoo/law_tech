@@ -37,7 +37,7 @@ class TransactionsController < ApplicationController
 
   private
   def transaction_params
-    params.require(:transaction).permit(:contact_date, :rent_adress, :rent_name, :deposit_amount, :return_date, :destination, :deadline, :user_id)
+    params.require(:transaction).permit(:user_name, :user_adress, :contact_date, :rent_adress, :rent_name, :deposit_amount, :return_date, :destination, :deadline, :user_id)
   end
   def set_transaction
     @transaction = Transaction.find(params[:id])
