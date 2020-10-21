@@ -1,0 +1,73 @@
+<div id="B">
+  <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <h5>　Sign up</h5>
+  <h5>　文書作成の説明</h5>
+  <h5 id="now">　取引内容の入力</h5>
+  <h5>　敷金精算書の入力</h5>
+  <h5>　通常損耗のチェック</h5>
+  <h5>　負担範囲のチェック</h5>
+  <h5>　経年劣化のチェック</h5>
+  <h5>　敷金返還額の確認画面</h5>
+  <h5>　文書のダウンロード</h5>
+  <h5 id="question">よくある質問（Q&A）</h5>
+ </div>
+</div>
+
+<div id="C">
+<div class="fusen3"><%= link_to "戻る", explain3_path %></div>
+<h3>取引情報の記入</h3>
+<h4>まずは前提となる取引内容を記入していきましょう</h4>
+
+<%= form_with(model: @transaction, local: true) do |form| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :賃貸借契約の契約日 %>
+    <%= form.text_field :contact_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :賃貸借契約の物件の住所 %>
+    <%= form.text_field :rent_adress %>
+  </div>
+
+  <div class="field">
+    <%= form.label :賃貸人（オーナー）の氏名 %>
+    <%= form.text_field :rent_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :敷金の金額 %>
+    <%= form.text_field :deposit_amount %>
+  </div>
+  <!-- 万葉の日付入力を取り入れる -->
+  <div class="field">
+    <%= form.label :明け渡し日 %>
+    <%= form.text_field :return_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :作成した文書の送付先住所 %>
+    <%= form.text_field :destination %>
+  </div>
+
+  <div class="field">
+    <%= form.label :敷金（残額）の返還を求める期限 %>
+    <%= form.text_field :deadline %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>

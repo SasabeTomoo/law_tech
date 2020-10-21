@@ -14,7 +14,10 @@
 </div>
 
 <div id="C">
-  <h4>敷金精算書の工事等の項目名と金額を入力してください</h4>
+  <h3>敷金精算書の入力</h3>
+  <h4>次に、敷金精算書の内容を入力していきましょう</h4>
+  <div class="fusen2">敷金精算書の項目ごとに工事等の名前と金額だけ入力してください</div>
+  <h5>あとで明細書の画像等整える</h5>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
     <table class="table">
@@ -51,4 +54,12 @@
       <% end %>
     </table>
   </div>
+  <div class="image1">
+    <%= image_tag 'explain2.png', size: "500x250"%>
+  </div>
 </div>
+
+<!-- <div id="D">
+  <%= image_tag 'left.png', size: "70x70"%>
+  <%= image_tag 'meisai.png', size: "300x300"%>
+</div> -->
