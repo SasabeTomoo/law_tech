@@ -40,7 +40,7 @@
   </div>
   <div class="field">
     <%= form.label :賃貸借契約の契約日 %>
-    <%= form.date_field :contact_date %>
+    <%= form.date_field :contacts_date %>
   </div>
   <div class="field">
     <%= form.label :賃貸借契約の物件の住所 %>
@@ -54,10 +54,14 @@
     <%= form.label :敷金の金額 %>
     <%= form.text_field :deposit_amount, placeholder:150000 %>
   </div>
+  <div class="field">
+    <%= form.label :返還済みの敷金の金額 %>
+    <%= form.text_field :return_deposit, placeholder:30000 %>
+  </div>
   <!-- 万葉の日付入力を取り入れる -->
   <div class="field">
     <%= form.label :明け渡し日 %>
-    <%= form.date_field :return_date %>
+    <%= form.date_field :returns_date %>
   </div>
   <div class="field">
     <%= form.label :作成した文書の送付先住所 %>
@@ -66,6 +70,10 @@
   <div class="field">
     <%= form.label :敷金（残額）の返還を求める期限 %>
     <%= form.text_field :deadline, placeholder: 12 %>
+  </div>
+  <div class="field">
+    <%= form.label :通知書を送付する予定日 %>
+    <%= form.date_field :make_date %>
   </div>
   <div class="actions">
     <%= form.submit %>

@@ -6,6 +6,7 @@
 <!-- 合計の情報 -->
 <% adjustment_number = current_user.adjustments.ids.last %>
 <% @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost) %>
+<% @burden_cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:burden_cost) %>
 <% @degradation_cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:degradation_cost) %>
 
 <h2>　　　　　　　　　　　　　　敷金返還請求書</h2>
@@ -13,19 +14,20 @@
 <h2><%= @transactions.destination %></h2>
 
 <h2>
-　私（<%= @transactions.user_name %>）は、<%= @transactions.contact_date %>に下記物件について貴殿か
+　私（<%= @transactions.user_name %>）は、<%= @transactions.contacts_date %>に下記物件について貴殿か
 ら賃借するための賃貸借契約書を締結しました。敷金は、<%= @transactions.deposit_amount %>円を差し入れています。
 </h2>
 <h2>
 　この契約は、解約し、同建物の明け
-渡しは、<%= @transactions.return_date %>日に既に完了しました。ついては、本契約に基づき、
-貴殿に預けている敷金の<%= @cost_amount %>円を本状到着後<%= @transactions.deadline %>日
+渡しは、<%= @transactions.returns_date %>に既に完了しました。ついては、本契約に基づき、
+貴殿に預けている敷金の残額のうち、下記算定の金額<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円を本状到着後<%= @transactions.deadline %>日
 以内に返還してください。
 <h2>　振込先の口座は、従前の賃貸借契約で使用していた私名義の口座にお振込ください。</h2>
 <h2>　改正民法621条で「通常の使用及び収益によって生じた賃借物の損耗並びに賃借物の経年変化」（以下「通常損耗等」）が原状回復義務の範囲から明確に除外されています。</h2>
 <h2>　同日までに振り込みがない場合は、法的手続きを
 考えています。</h2>
 </h2>
+<h2>　　　　　　　　　　　　　　　　記</h2>
 <h2>
 　敷金の精算に係る書面を拝見しましたが、次の理由で承服しかねます。
 </h2>
@@ -67,6 +69,7 @@
   </tr>
 <% end %>
 </table>
+<h4>合計金額（経年劣化反映後の金額が最終値）　<%= @degradation_cost_amount %>円</h4>
 <h2>
 　なお、通常損耗に該当する理由は次の通りです。
 </h2>
@@ -125,17 +128,18 @@
   </tr>
 <% end %>
 </table>
-<h4>合計金額　<% @degradation_cost_amount %>円</h4>
-<h2>　したがって、下記の過程で算定した金額の返還を求めます</h2>
+<h2>　したがって、次の算定金額<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円の返還を求めます</h2>
 <h2>　　敷金の預け額<%= @transactions.deposit_amount %>円</h2>
+<h2>　　精算限度額<%= @degradation_cost_amount %>円</h2>
 <h2>　　返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円</h2>
-<h2>　　うち、既に返還済みの金額<%= @transactions.deposit_amount %>円</h2>
-<h2>　　返還を求める敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円（結論）</h2>
+<h2>　　うち、既に返還済みの金額<%= @transactions.return_deposit %>円</h2>
+<h2>　　返還を求める敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円（結論）</h2>
 
 <h2>　以上、ご対応の程、よろしくお願いします</h2>
 
 <h2>　　　　　　　　　　　　　　　物件の表示</h2>
 <h2><%= @transactions.rent_adress %></h2>
-<h2>〇〇年〇〇月〇〇日</h2>
+<h2>　</h2>
+<h2><%= @transactions.make_date %></h2>
 <h2>通知人　<%= @transactions.user_name %></h2>
 <h2><%= @transactions.user_adress %></h2>
