@@ -5,7 +5,8 @@
 <% @transactions = Transaction.where(user_id:current_user.id).last %>
 <!-- 合計の情報 -->
 <% adjustment_number = current_user.adjustments.ids.last %>
-<% @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:degradation_cost) %>
+<% @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost) %>
+<% @degradation_cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:degradation_cost) %>
 
 <h2>　　　　　　　　　　　　　　敷金返還請求書</h2>
 <h2><%= @transactions.rent_name %>　殿</h2>
@@ -16,21 +17,20 @@
 ら賃借するための賃貸借契約書を締結しました。敷金は、<%= @transactions.deposit_amount %>円を差し入れています。
 </h2>
 <h2>
-この契約は、解約し、同建物の明け
+　この契約は、解約し、同建物の明け
 渡しは、<%= @transactions.return_date %>日に既に完了しました。ついては、本契約に基づき、
 貴殿に預けている敷金の<%= @cost_amount %>円を本状到着後<%= @transactions.deadline %>日
 以内に返還してください。
-<h2>なお、振込先の口座は、従前の賃貸借契約で使用していた私名義の口座にお振込ください</h2>
-<h2>改正民法621条で「通常の使用及び収益によって生じた賃借物の損耗並びに賃借物の経年変化」（以下「通常損耗等」）が原状回復義務の範囲から明確に除外されています。</h2>
-<h2>「原状回復をめぐるガイドライン」では、家賃滞納や
-故意・過失による汚損・毀損を除いて敷金は返還するこ
-とになっています。
-なお、同日までに振り込みがない場合は、法的手続きを
-考えています。
-</h2>
+<h2>　振込先の口座は、従前の賃貸借契約で使用していた私名義の口座にお振込ください。</h2>
+<h2>　改正民法621条で「通常の使用及び収益によって生じた賃借物の損耗並びに賃借物の経年変化」（以下「通常損耗等」）が原状回復義務の範囲から明確に除外されています。</h2>
+<h2>　同日までに振り込みがない場合は、法的手続きを
+考えています。</h2>
 </h2>
 <h2>
-敷金精算書の金額は次のようになっていました。
+　敷金の精算に係る書面を拝見しましたが、次の理由で承服しかねます。
+</h2>
+<h2>
+　まず敷金精算に係る書面の金額は次のようになっていました。
 </h2>
 <table>
   <tr>
@@ -47,23 +47,92 @@
 </table>
 <h4>合計金額　<%= @cost_amount %>円</h4>
 <h2>
-しかし、前述の通り、通常損耗、負担範囲、経年劣化を考えても次の金額を下回りません。
+　しかし、前述の通り、通常損耗、負担範囲、経年劣化等を考えますと精算限度額は少なくとも次の金額になります。
 </h2>
-<%= @transactions.rent_name %>
 <table>
   <tr>
-    <th>工事の項目名</th>
+    <th>工事等の項目名</th>
     <th>金額</th>
-    <th colspan="3"></th>
+    <th>通常損耗反映後の金額</th>
+    <th>負担範囲反映後の金額</th>
+    <th>経年劣化反映後の金額</th>
   </tr>
   <% @adjustments.each do |adjust| %>
   <tr>
     <td class="task_row"><%= adjust.item %></td>
     <td class="task_row"><%= adjust.cost %></td>
+    <td class="task_row"><%= adjust.damage_cost %></td>
+    <td class="task_row"><%= adjust.burden_cost %></td>
+    <td class="task_row"><%= adjust.degradation_cost %></td>
   </tr>
 <% end %>
 </table>
-<h2>以上、ご対応の程、よろしくお願いします</h2>
+<h2>
+　なお、通常損耗に該当する理由は次の通りです。
+</h2>
+<table>
+  <tr>
+    <th>工事等の項目名</th>
+    <th>通常損耗反映後の金額</th>
+    <th>理由</th>
+  </tr>
+  <% @adjustments.each do |adjust| %>
+  <tr>
+    <td class="task_row"><%= adjust.item %></td>
+    <td class="task_row"><%= adjust.cost %></td>
+    <td class="task_row"><%= adjust.damage_reason %></td>
+  </tr>
+<% end %>
+</table>
+<h2>
+　また、負担範囲減少等に係る理由は次の通りです。
+</h2>
+<table>
+  <tr>
+    <th>工事等の項目名</th>
+    <th>負担範囲反映後の金額</th>
+    <th>理由</th>
+  </tr>
+  <% @adjustments.each do |adjust| %>
+  <tr>
+    <td class="task_row"><%= adjust.item %></td>
+    <td class="task_row"><%= adjust.burden_cost %></td>
+    <td class="task_row"><%= adjust.burden_reason %></td>
+  </tr>
+<% end %>
+</table>
+<h2>
+　また、経年劣化の算定は次の通りです。
+</h2>
+<table>
+  <tr>
+    <th>工事等の項目名</th>
+    <th>経年劣化反映後の金額</th>
+    <th>設備の名前</th>
+    <th>耐用年数</th>
+    <th>経過年数</th>
+    <th>借りた当初の価値</th>
+    <th></th>
+  </tr>
+  <% @adjustments.each do |adjust| %>
+  <tr>
+    <td class="task_row"><%= adjust.item %></td>
+    <td class="task_row"><%= adjust.degradation_cost %></td>
+    <td class="task_row"><%= adjust.equipment_name %></td>
+    <td class="task_row"><%= adjust.service_year %></td>
+    <td class="task_row"><%= adjust.rent_year %></td>
+    <td class="task_row"><%= adjust.first_value %></td>
+  </tr>
+<% end %>
+</table>
+<h4>合計金額　<% @degradation_cost_amount %>円</h4>
+<h2>　したがって、下記の過程で算定した金額の返還を求めます</h2>
+<h2>　　敷金の預け額<%= @transactions.deposit_amount %>円</h2>
+<h2>　　返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円</h2>
+<h2>　　うち、既に返還済みの金額<%= @transactions.deposit_amount %>円</h2>
+<h2>　　返還を求める敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円（結論）</h2>
+
+<h2>　以上、ご対応の程、よろしくお願いします</h2>
 
 <h2>　　　　　　　　　　　　　　　物件の表示</h2>
 <h2><%= @transactions.rent_adress %></h2>

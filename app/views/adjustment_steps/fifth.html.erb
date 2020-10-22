@@ -1,4 +1,13 @@
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!-- 敷金精算書の内容 -->
+<% @adjustment = Adjustment.where(user_id:current_user.id).last %>
+<% @adjustments = @adjustment.datails  %>
+<!-- 取引内容 -->
+<% @transactions = Transaction.where(user_id:current_user.id).last %>
+<!-- 合計の情報 -->
+<% adjustment_number = current_user.adjustments.ids.last %>
+<% @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost) %>
+<% @degradation_cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:degradation_cost) %>
+
 <div id="B">
   <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
   <h5>　Sign up</h5>
@@ -90,5 +99,17 @@
         </div>
       <% end %>
     </table>
-      <%= image_tag 'confirm.png', size: "300x200"%>
+  <div>
+    敷金の預け額<%= @transactions.deposit_amount %>円
+  </div>
+  <div>
+    返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円
+  </div>
+  <div>
+    うち、既に返還済みの金額<%= @transactions.deposit_amount %>円
+  </div>
+  <div>
+    返還を求める敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円
+  </div>
+    <%= image_tag 'confirm.png', size: "300x200"%>
   </div>
