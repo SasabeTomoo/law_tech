@@ -21,10 +21,10 @@
 <%= form_with(model: @transaction, local: true) do |form| %>
   <% if @transaction.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% post.errors.full_messages.each do |message| %>
+      <% @transaction.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -58,7 +58,6 @@
     <%= form.label :返還済みの敷金の金額 %>
     <%= form.text_field :return_deposit, placeholder:30000 %>
   </div>
-  <!-- 万葉の日付入力を取り入れる -->
   <div class="field">
     <%= form.label :明け渡し日 %>
     <%= form.date_field :returns_date %>

@@ -20,6 +20,17 @@
   <h5>あとで明細書の画像等整える</h5>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
+      <% if @adjustment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@adjustment.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+          <ul>
+          <% @adjustment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
     <table class="table">
       <thead>
         <tr>
@@ -43,7 +54,7 @@
           </td>
           <td>
             <div class="estate_form">
-              <%= datail.text_field :cost, placeholder:24000 %>
+              <%= datail.number_field :cost, placeholder:24000 %>
             </div>
           </td>
         <% end %>
