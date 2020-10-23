@@ -39,7 +39,9 @@
   <div>
     <%= link_to '戻る', previous_wizard_path %>
   </div>
-
+  <div class="fusen52">
+    項目を入れないこともできるけど、かなりシンプルな書面になるよ
+  </div>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
     <table class="table">
@@ -102,14 +104,19 @@
   <div>
     敷金の預け額<%= @transactions.deposit_amount %>円
   </div>
+
+  <% if @cost_amount >0 %>
+    <div>精算される限度額<%= @degradation_cost_amount %>円（上の表の結果より）</div>
+  <% end %>
+
   <div>
     返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円
   </div>
   <div>
-    うち、既に返還済みの金額<%= @transactions.deposit_amount %>円
+    うち、既に返還済みの金額<%= @transactions.return_deposit %>円
   </div>
-  <div>
-    返還を求める敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円
+  <div class="fusen8">
+    返還を求める敷金の金額（結論）<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円
   </div>
     <%= image_tag 'confirm.png', size: "300x200"%>
   </div>

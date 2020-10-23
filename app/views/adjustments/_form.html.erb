@@ -18,6 +18,9 @@
   <h4>次に、敷金精算書の内容を入力していきましょう</h4>
   <div class="fusen2">敷金精算書の項目ごとに工事等の名前と金額だけ入力してください</div>
   <h5>あとで明細書の画像等整える</h5>
+  <div class="fusen52">
+    項目を入れないこともできるけど、かなりシンプルな書面になるよ
+  </div>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
       <% if @adjustment.errors.any? %>

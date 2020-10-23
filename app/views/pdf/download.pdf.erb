@@ -134,7 +134,7 @@
 <h2>　　敷金の預け額<%= @transactions.deposit_amount %>円</h2>
 
 <% if @cost_amount >0 %>
-<h2>　　精算限度額<%= @degradation_cost_amount %>円（上記参照）</h2>
+<h2>　　精算される限度額<%= @degradation_cost_amount %>円（上記参照）</h2>
 <% end %>
 
 <h2>　　返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円</h2>
