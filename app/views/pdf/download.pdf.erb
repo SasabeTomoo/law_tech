@@ -26,111 +26,117 @@
 <h2>　改正民法621条で「通常の使用及び収益によって生じた賃借物の損耗並びに賃借物の経年変化」が原状回復義務の範囲から明確に除外されています。</h2>
 <h2>　同日までに振り込みがない場合は、法的手続きを
 考えています。</h2>
-</h2>
 <h2>　　　　　　　　　　　　　　　　記</h2>
-<h2>
-　敷金の精算に係る書面を拝見しましたが、次の理由で承服しかねます。
-</h2>
-<h2>
-　まず敷金精算に係る書面の金額は次のようになっていました。
-</h2>
-<table>
-  <tr>
-    <th>工事の項目名</th>
-    <th>金額</th>
-    <th colspan="3"></th>
-  </tr>
-  <% @adjustments.each do |adjust| %>
-  <tr>
-    <td class="task_row"><%= adjust.item %></td>
-    <td class="task_row"><%= adjust.cost %></td>
-  </tr>
+
+<% if @cost_amount >0 %>
+  <h2>
+  　敷金の精算に係る書面を拝見しましたが、次の理由で承服しかねます。
+  </h2>
+  <h2>
+  　まず敷金精算に係る書面の金額は次のようになっていました。
+  </h2>
+  <table>
+    <tr>
+      <th>工事の項目名</th>
+      <th>金額</th>
+      <th colspan="3"></th>
+    </tr>
+    <% @adjustments.each do |adjust| %>
+    <tr>
+      <td class="task_row"><%= adjust.item %></td>
+      <td class="task_row"><%= adjust.cost %></td>
+    </tr>
+  <% end %>
+  </table>
+  <h4>合計金額　<%= @cost_amount %>円</h4>
+  <h2>
+  　しかし、前述の通り、通常損耗、負担範囲、経年劣化等を考えますと精算限度額は少なくとも次の金額になります。
+  </h2>
+  <table>
+    <tr>
+      <th>工事等の項目名</th>
+      <th>金額</th>
+      <th>通常損耗反映後の金額</th>
+      <th>負担範囲反映後の金額</th>
+      <th>経年劣化反映後の金額</th>
+    </tr>
+    <% @adjustments.each do |adjust| %>
+    <tr>
+      <td class="task_row"><%= adjust.item %></td>
+      <td class="task_row"><%= adjust.cost %></td>
+      <td class="task_row"><%= adjust.damage_cost %></td>
+      <td class="task_row"><%= adjust.burden_cost %></td>
+      <td class="task_row"><%= adjust.degradation_cost %></td>
+    </tr>
+  <% end %>
+  </table>
+  <h4>合計金額（経年劣化反映後の金額が最終値）　<%= @degradation_cost_amount %>円</h4>
+  <h2>
+  　なお、通常損耗に該当する理由は次の通りです。
+  </h2>
+  <table>
+    <tr>
+      <th>工事等の項目名</th>
+      <th>通常損耗反映後の金額</th>
+      <th>理由</th>
+    </tr>
+    <% @adjustments.each do |adjust| %>
+    <tr>
+      <td class="task_row"><%= adjust.item %></td>
+      <td class="task_row"><%= adjust.cost %></td>
+      <td class="task_row"><%= adjust.damage_reason %></td>
+    </tr>
+  <% end %>
+  </table>
+  <h2>
+  　また、負担範囲減少等に係る理由は次の通りです。
+  </h2>
+  <table>
+    <tr>
+      <th>工事等の項目名</th>
+      <th>負担範囲反映後の金額</th>
+      <th>理由</th>
+    </tr>
+    <% @adjustments.each do |adjust| %>
+    <tr>
+      <td class="task_row"><%= adjust.item %></td>
+      <td class="task_row"><%= adjust.burden_cost %></td>
+      <td class="task_row"><%= adjust.burden_reason %></td>
+    </tr>
+  <% end %>
+  </table>
+  <h2>
+  　また、経年劣化の算定は次の通りです。
+  </h2>
+  <table>
+    <tr>
+      <th>工事等の項目名</th>
+      <th>経年劣化反映後の金額</th>
+      <th>設備の名前</th>
+      <th>耐用年数</th>
+      <th>経過年数</th>
+      <th>借りた当初の価値</th>
+      <th></th>
+    </tr>
+    <% @adjustments.each do |adjust| %>
+    <tr>
+      <td class="task_row"><%= adjust.item %></td>
+      <td class="task_row"><%= adjust.degradation_cost %></td>
+      <td class="task_row"><%= adjust.equipment_name %></td>
+      <td class="task_row"><%= adjust.service_year %></td>
+      <td class="task_row"><%= adjust.rent_year %></td>
+      <td class="task_row"><%= adjust.first_value %></td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>
-<h4>合計金額　<%= @cost_amount %>円</h4>
-<h2>
-　しかし、前述の通り、通常損耗、負担範囲、経年劣化等を考えますと精算限度額は少なくとも次の金額になります。
-</h2>
-<table>
-  <tr>
-    <th>工事等の項目名</th>
-    <th>金額</th>
-    <th>通常損耗反映後の金額</th>
-    <th>負担範囲反映後の金額</th>
-    <th>経年劣化反映後の金額</th>
-  </tr>
-  <% @adjustments.each do |adjust| %>
-  <tr>
-    <td class="task_row"><%= adjust.item %></td>
-    <td class="task_row"><%= adjust.cost %></td>
-    <td class="task_row"><%= adjust.damage_cost %></td>
-    <td class="task_row"><%= adjust.burden_cost %></td>
-    <td class="task_row"><%= adjust.degradation_cost %></td>
-  </tr>
-<% end %>
-</table>
-<h4>合計金額（経年劣化反映後の金額が最終値）　<%= @degradation_cost_amount %>円</h4>
-<h2>
-　なお、通常損耗に該当する理由は次の通りです。
-</h2>
-<table>
-  <tr>
-    <th>工事等の項目名</th>
-    <th>通常損耗反映後の金額</th>
-    <th>理由</th>
-  </tr>
-  <% @adjustments.each do |adjust| %>
-  <tr>
-    <td class="task_row"><%= adjust.item %></td>
-    <td class="task_row"><%= adjust.cost %></td>
-    <td class="task_row"><%= adjust.damage_reason %></td>
-  </tr>
-<% end %>
-</table>
-<h2>
-　また、負担範囲減少等に係る理由は次の通りです。
-</h2>
-<table>
-  <tr>
-    <th>工事等の項目名</th>
-    <th>負担範囲反映後の金額</th>
-    <th>理由</th>
-  </tr>
-  <% @adjustments.each do |adjust| %>
-  <tr>
-    <td class="task_row"><%= adjust.item %></td>
-    <td class="task_row"><%= adjust.burden_cost %></td>
-    <td class="task_row"><%= adjust.burden_reason %></td>
-  </tr>
-<% end %>
-</table>
-<h2>
-　また、経年劣化の算定は次の通りです。
-</h2>
-<table>
-  <tr>
-    <th>工事等の項目名</th>
-    <th>経年劣化反映後の金額</th>
-    <th>設備の名前</th>
-    <th>耐用年数</th>
-    <th>経過年数</th>
-    <th>借りた当初の価値</th>
-    <th></th>
-  </tr>
-  <% @adjustments.each do |adjust| %>
-  <tr>
-    <td class="task_row"><%= adjust.item %></td>
-    <td class="task_row"><%= adjust.degradation_cost %></td>
-    <td class="task_row"><%= adjust.equipment_name %></td>
-    <td class="task_row"><%= adjust.service_year %></td>
-    <td class="task_row"><%= adjust.rent_year %></td>
-    <td class="task_row"><%= adjust.first_value %></td>
-  </tr>
-<% end %>
-</table>
-<h2>　したがって、次の算定金額<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円の返還を求めます</h2>
+<h2>　算定金額<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円は次の通り計算しています。</h2>
 <h2>　　敷金の預け額<%= @transactions.deposit_amount %>円</h2>
-<h2>　　精算限度額<%= @degradation_cost_amount %>円</h2>
+
+<% if @cost_amount >0 %>
+<h2>　　精算限度額<%= @degradation_cost_amount %>円（上記参照）</h2>
+<% end %>
+
 <h2>　　返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円</h2>
 <h2>　　うち、既に返還済みの金額<%= @transactions.return_deposit %>円</h2>
 <h2>　　返還を求める敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円（結論）</h2>
