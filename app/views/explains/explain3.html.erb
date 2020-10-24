@@ -1,3 +1,4 @@
+<% @transaction = Transaction.where(user_id:current_user.id).last %>
 <div id="B">
   <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
   <h5>　Sign up</h5>
@@ -14,7 +15,12 @@
 </div>
 
 <div id="C">
-  <div class="fusen1"><%= link_to "次へ", new_transaction_path %></div>
+  <% if @transaction == nil %>
+  <div class="fusen1"><%= link_to "次へ（新規）", new_transaction_path %></div>
+  <% end %>
+  <% if @transaction != nil %>
+  <div class="fusen1"><%= link_to "次へ（編集）", edit_transaction_path(@transaction.id) %></div>
+  <% end %>
   <div class="fusen3"><%= link_to "戻る", explain2_path %></div>
   <h3>敷金返還のポイント</h3>
   <h4>①通常損耗、②経年劣化、③負担範囲というポイントでみていきましょう</h4>

@@ -37,7 +37,7 @@ class AdjustmentsController < ApplicationController
     @adjustment.user_id = current_user.id
     render :new if params[:back]
     if @adjustment.save
-      redirect_to adjustment_steps_path(@adjustment), notice: "登録しました"
+      redirect_to second_path(@adjustment), notice: "登録しました"
     else
       render :new
     end

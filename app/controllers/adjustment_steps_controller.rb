@@ -59,10 +59,6 @@ class AdjustmentStepsController < ApplicationController
                                 :rent_year,
                                 :de_burden_percentage,
                                 :degradation_cost,
-                                :adjustment_id,
-                                :second
-                                :third
-                                :fourth
-                                :fifth)
+                                :adjustment_id])
   end
 end
