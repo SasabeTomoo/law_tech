@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      adjustment: 精算
+      datail: 詳細
+      transaction: 取引
+      user: ユーザー
+    attributes:
+      transaction:
+        user_name: あなたの名前
+        user_adress: あなたの住所
+        rent_name: 賃貸人（オーナー）の氏名
+        destination: 作成した文書の送付先住所
+        deadline: 返還を求める期限
+        deposit_amount: 敷金の金額
+        return_deposit: 返還済み敷金額
+      user:
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+        login_needed: ログインが必要です

@@ -7,7 +7,7 @@ wait = Selenium::WebDriver::Wait.new(:timeout => 8)
 describe 'PDF機能', type: :system do
   describe 'PDF反映機能' do
     context '新規入力した場合' do
-      it '入力内容がPDFに表示される' do
+      it 'PDF自体が表示される' do
         # FactoryBot.create(:transaction_first)
         visit new_user_path
         fill_in 'user_name', with: 'satou'
@@ -27,12 +27,11 @@ describe 'PDF機能', type: :system do
         fill_in 'transaction_contacts_date', with: '2019030303'
         fill_in 'transaction_returns_date', with: '2019030303'
         fill_in 'transaction_make_date', with: '2019030303'
-        click_on 'Create Transaction'
+        click_on '登録する'
         fill_in 'adjustment_datails_attributes_0_item', with: '工事1'
         fill_in 'adjustment_datails_attributes_0_cost', with: '10000'
-        click_on 'Create Adjustment'
+        click_on '登録する'
         visit pdf_download_path
-        binding.irb
         expect(page).to have_content ''
       end
     end

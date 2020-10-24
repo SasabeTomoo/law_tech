@@ -21,7 +21,7 @@
 <%= form_with(model: @transaction, local: true) do |form| %>
   <% if @transaction.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@transaction.errors.count, "個のエラー") %> が発生して登録できません:</h2>
 
       <ul>
       <% @transaction.errors.full_messages.each do |message| %>

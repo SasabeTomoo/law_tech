@@ -11,9 +11,10 @@
 
   <header>
     <h1>敷金返還の支援サイト（仮名）</h1>
-    <% flash.each do |key, value| %>
+    <!-- 以下の理解が足りていないため、一旦、使わない -->
+    <!-- <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
+    <% end %> -->
     <% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
