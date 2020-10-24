@@ -1,0 +1,115 @@
+<div id="B">
+  <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <h5>　Sign up</h5>
+  <h5>　文書作成の説明</h5>
+  <h5>　取引内容の入力</h5>
+  <h5>　敷金精算書の入力</h5>
+  <h5>　通常損耗のチェック</h5>
+  <h5 id="now">　負担範囲のチェック</h5>
+  <h5>　経年劣化のチェック</h5>
+  <h5>　敷金返還額の確認画面</h5>
+  <h5>　文書のダウンロード</h5>
+  <h5 id="question">よくある質問（Q&A）</h5>
+ </div>
+</div>
+
+<div id="C">
+  <%= image_tag 'burden.png', size: "700x300"%>
+  <div class="fusen5">
+    過大な工事費用は負担する必要はないよ
+  </div>
+  <div class="fusen5">
+    過大な工事費用かどうかの判断は、下の具体例を読んでね（後に記載予定）
+  </div>
+  <div class="fusen5">
+    工事の負担範囲が過大と思った場合は、「金額（反映後）」にあなたの正しい金額を入れてね。そうでない場合は、「前のstep反映後金額」と「金額（反映後）」を同じ金額にしてね。
+  </div>
+  <div class="fusen5">
+    「金額（反映後）」に正しい金額を入れた場合は、「理由」も入力してね。
+  </div>
+  <div class="fusen5">
+    入力したり値を更新した場合は、「update」ボタンを押してから「次へ」を押さないと更新されないよ
+  </div>
+  <div>
+
+  </div>
+  <div>
+
+  </div>
+  <div class="fusen52">
+    項目を入れないこともできるけど、かなりシンプルな書面になるよ
+  </div>
+  <div>
+    <%= form_with(model: @adjustment, local: true ) do |form| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="30px">No.</th>
+          <th>工事等の項目名</th>
+          <th>前のstep反映後金額</th>
+          <!-- <th>敷金精算書の数量</th>
+          <th>あなたが考える数量</th>
+          <th>単位</th> -->
+          <th>理由</th>
+          <!-- <th>負担割合</th> -->
+          <th>金額（反映後）</th>
+        </tr>
+      </thead>
+      <% i = 0 %>
+        <%= form.fields_for :datails do |datail| %>
+        <% i += 1 %>
+          <tr>
+            <td>
+              <div class="estate_form">
+                <%= i %>
+              </div>
+            </td>
+            <td>
+              <%= datail.text_field :item %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :damage_cost %>
+            </div>
+          </td>
+          <!-- <td>
+            <div class="estate_form">
+              <%= datail.text_field :rent_quantity %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :my_quantity %>
+            </div>
+          </td>
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :unit %>
+            </div>
+          </td> -->
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :burden_reason %>
+            </div>
+          </td>
+          <!-- <td>
+            <div class="estate_form">
+              <%= datail.text_field :burden_percentage %>
+            </div>
+          </td> -->
+          <td>
+            <div class="estate_form">
+              <%= datail.text_field :burden_cost %>
+            </div>
+          </td>
+          <%= hidden_field_tag :third, true %>
+        <% end %>
+        <%= link_to '戻る', second_path %>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </table>
+  </div>
+</div>

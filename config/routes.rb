@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+  get   'second', to: 'adjustments#second'
+  get   'third', to: 'adjustments#third'
+  get   'fourth', to: 'adjustments#fourth'
+  get   'fifth', to: 'adjustments#fifth'
   # get   'input1', to: 'adjustments#input1'
   # get   'input2', to: 'adjustments#input2'
   resources :transactions

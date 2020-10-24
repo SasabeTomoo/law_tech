@@ -1,6 +1,28 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
-
+  def second
+    @transaction = Transaction.where(user_id:current_user.id).last
+    @adjustment = Adjustment.where(user_id:current_user.id).last
+    # binding.irb
+    if params[:search].present?
+      @samples = Sample.where(category: params[:search])
+      @usual_samples = @samples.where(field: "usual")
+      @unusual_samples = @samples.where(field: "unusual")
+    else
+      @samples = Sample.where(category: "1.床（畳、フローリング、カーペットなど）")
+      @usual_samples = @samples.where(field: "usual")
+      @unusual_samples = @samples.where(field: "unusual")
+    end
+  end
+  def third
+    @adjustment = Adjustment.where(user_id:current_user.id).last
+  end
+  def fourth
+    @adjustment = Adjustment.where(user_id:current_user.id).last
+  end
+  def fifth
+    @adjustment = Adjustment.where(user_id:current_user.id).last
+  end
   def index
     # lastはどうしようか迷い中（一つに絞らないとsumがおかしくなりそう）
     adjustment_number = current_user.adjustments.ids.last
@@ -28,10 +50,20 @@ class AdjustmentsController < ApplicationController
   end
   def update
     if @adjustment.update(adjustment_params)
-      # redirect_to adjustment_steps_path(@adjustment), notice: "登録しました"
-    else
-      render :edit
+      if params[:second].present?
+        redirect_to third_path(@adjustment)
+      elsif params[:third].present?
+        redirect_to fourth_path(@adjustment)
+      elsif params[:fourth].present?
+        redirect_to fifth_path(@adjustment)
+      elsif params[:fifth].present?
+        redirect_to fifth_path(@adjustment)
+      else
+        render :edit
+    # else
+    #   render :edit
     end
+  end
   end
   # 確認画面は実装難しいかも（ネストさせているモデルの影響？）
   def confirm
@@ -76,7 +108,11 @@ class AdjustmentsController < ApplicationController
                                 :rent_year,
                                 :de_burden_percentage,
                                 :degradation_cost,
-                                :adjustment_id])
+                                :adjustment_id,
+                                :second,
+                                :third,
+                                :fourth,
+                                :fifth])
   end
   def set_adjustment
     @adjustment = Adjustment.find(params[:id])
