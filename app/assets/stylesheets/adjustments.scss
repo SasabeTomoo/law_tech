@@ -32,10 +32,14 @@ margin-top:10px;
   background-color: rgb(205, 238, 57);
 }
 header {
+  width:1300px;
+  padding-bottom: -20px;
   padding-left: 20px;
   background-color: rgb(205, 238, 57);
 }
 footer {
+  position: absolute; bottom: 0;
+  width:1300px;
   background-color: rgb(205, 238, 57);
   min-height:70px;
   margin-top:10px;

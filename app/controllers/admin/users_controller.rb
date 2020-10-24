@@ -20,11 +20,10 @@ class Admin::UsersController < ApplicationController
     def show
     end
     def edit
-
     end
     def update
       if @user.update(user_params)
-        redirect_to admin_user_path(@user.id), notice: "プロフィールを編集しました！"
+        redirect_to admin_users_path, notice: "プロフィールを編集しました！"
       else
         render :edit
       end

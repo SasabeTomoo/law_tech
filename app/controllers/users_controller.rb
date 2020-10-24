@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def new
+    if logged_in?
+      redirect_to explain1_path
+    end
    @user = User.new
   end
   def create
