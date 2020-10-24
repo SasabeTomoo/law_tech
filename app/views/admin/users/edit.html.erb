@@ -1,0 +1,25 @@
+<h1>管理者画面 user編集</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "つのエラー") %> が発生しました <%= @user.name %> :</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+ <!-- アドミンの場合、下記ようにモデルを修正するか、url: admin_user_path(@user.id)とする -->
+<%= form_with(model: [ :admin, @user ], local: true) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :admin %>
+  <%= f.select :admin, {'一般': false, '管理者': true}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit %>
+<% end %>

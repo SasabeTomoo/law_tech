@@ -1,3 +1,9 @@
+User.create!(name:  "管理者",
+             email: "admin@gmail.com",
+             password:  "adminsan",
+             password_confirmation: "adminsan",
+             admin: true)
+
 Sample.create!(
   category: "1.床（畳、フローリング、カーペットなど）",
   field: "usual",
