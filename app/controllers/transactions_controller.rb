@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
   end
   def update
     if @transaction.update(transaction_params)
-      redirect_to transaction_path(@transaction.id), notice: "編集しました"
+      redirect_to new_adjustment_url(@transaction.id), notice: "編集しました"
     else
       render :edit
     end
