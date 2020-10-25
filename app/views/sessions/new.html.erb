@@ -1,14 +1,8 @@
-<h1>Log in</h1>
-<% if session.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(session.errors.count, "つのエラー") %> が発生しました :</h2>
-    <ul>
-    <% session.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
+<!-- flash.each doは、application.html.erbに記入したいが、国際化エラーがでるためこちらに記載 -->
+<% flash.each do |key, value| %>
+ <%= content_tag(:div, value, class: "#{key}") %>
 <% end %>
+<h1>Log in</h1>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <%= f.label :email %>
   <%= f.email_field :email %>
