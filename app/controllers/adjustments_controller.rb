@@ -2,7 +2,6 @@ class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
   def second
     @adjustment = Adjustment.where(user_id:current_user.id).last
-    # binding.irb
     if params[:search].present?
       @samples = Sample.where(category: params[:search])
       @usual_samples = @samples.where(field: "usual")
@@ -93,6 +92,10 @@ class AdjustmentsController < ApplicationController
             :cost_amount,
             :user_id,
             :back,
+            :second,
+            :third,
+            :fourth,
+            :fifth,
             datails_attributes:[:id,
                                 :item,
                                 :cost,
@@ -112,10 +115,8 @@ class AdjustmentsController < ApplicationController
                                 :de_burden_percentage,
                                 :degradation_cost,
                                 :adjustment_id,
-                                :second,
-                                :third,
-                                :fourth,
-                                :fifth])
+                                ])
+
   end
   def set_adjustment
     @adjustment = Adjustment.find(params[:id])
