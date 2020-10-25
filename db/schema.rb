@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_24_081255) do
+ActiveRecord::Schema.define(version: 2020_10_25_025323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,18 +37,11 @@ ActiveRecord::Schema.define(version: 2020_10_24_081255) do
     t.float "rent_year"
     t.float "de_burden_percentage"
     t.integer "degradation_cost"
+    t.string "second"
+    t.string "third"
+    t.string "fourth"
+    t.string "fifth"
     t.index ["user_id"], name: "index_adjustments_on_user_id"
-  end
-
-  create_table "damages", force: :cascade do |t|
-    t.bigint "adjustment_id"
-    t.string "answer"
-    t.text "reason"
-    t.integer "cost"
-    t.integer "cost_amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["adjustment_id"], name: "index_damages_on_adjustment_id"
   end
 
   create_table "datails", force: :cascade do |t|
@@ -115,7 +108,6 @@ ActiveRecord::Schema.define(version: 2020_10_24_081255) do
   end
 
   add_foreign_key "adjustments", "users"
-  add_foreign_key "damages", "adjustments"
   add_foreign_key "datails", "adjustments"
   add_foreign_key "transactions", "users"
 end

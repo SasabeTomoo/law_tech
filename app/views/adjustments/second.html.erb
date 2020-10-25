@@ -25,10 +25,6 @@
   <div class="fusen5">
     「金額（反映後）」を0円にした場合は、①「通常損耗に該当する理由」を入れてね。入力画面にマウスを置いて下を押すとサジェストされるよ
   </div>
-
-  <div class="fusen5">
-    入力したり値を更新した場合は、「update」ボタンを押してから「次へ」を押さないと更新されないよ
-  </div>
   <div>
 
   </div>
@@ -40,6 +36,7 @@
   </div>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
+    <%= hidden_field_tag :second, "true" %>
     <table class="table">
       <thead>
         <tr>
@@ -80,9 +77,8 @@
               <%= datail.text_field :damage_cost %>
             </div>
           </td>
-          <%= hidden_field_tag :second, "true" %>
         <% end %>
-        <%= link_to '戻る', edit_transaction_path(@transaction.id)  %>
+        <%= link_to '戻る', edit_adjustment_path(@adjustment.id)  %>
         <div class="actions">
           <%= form.submit %>
         </div>

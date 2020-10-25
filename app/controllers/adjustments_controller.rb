@@ -1,7 +1,6 @@
 class AdjustmentsController < ApplicationController
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
   def second
-    @transaction = Transaction.where(user_id:current_user.id).last
     @adjustment = Adjustment.where(user_id:current_user.id).last
     # binding.irb
     if params[:search].present?
@@ -29,10 +28,12 @@ class AdjustmentsController < ApplicationController
     @cost_amount = Adjustment.find_by(id: adjustment_number).datails.sum(:cost)
   end
   def new
+    @transaction = Transaction.where(user_id:current_user.id).last
     @adjustment = Adjustment.new
     7.times { @adjustment.datails.build }
   end
   def create
+    @transaction = Transaction.where(user_id:current_user.id).last
     @adjustment = Adjustment.new(adjustment_params)
     @adjustment.user_id = current_user.id
     render :new if params[:back]
@@ -43,12 +44,14 @@ class AdjustmentsController < ApplicationController
     end
   end
   def edit
+    @transaction = Transaction.where(user_id:current_user.id).last
   end
   def show
     redirect_to sessions_new_path unless logged_in?
     @adjustment = Adjustment.find_by(id: @adjustment.id)
   end
   def update
+    @transaction = Transaction.where(user_id:current_user.id).last
     if @adjustment.update(adjustment_params)
       if params[:second].present?
         redirect_to third_path(@adjustment)
@@ -59,7 +62,7 @@ class AdjustmentsController < ApplicationController
       elsif params[:fifth].present?
         redirect_to fifth_path(@adjustment)
       else
-        render :edit
+        redirect_to second_path(@adjustment)
     # else
     #   render :edit
     end
