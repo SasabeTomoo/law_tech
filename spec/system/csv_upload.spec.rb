@@ -14,10 +14,8 @@ describe 'CSV機能', type: :system do
         fill_in 'session_email', with: 'satou@gmail.com'
         fill_in 'session_password', with: 'satousan'
         click_on 'Log in'
-        visit admin_user_path
-        binding.irb
-        visit samples_path
-        sleep 1.0
+        click_on '管理者用'
+        click_on 'インポート'
         attach_file "file", "#{Rails.root}/spec/factories/sample.csv"
         click_on "インポート"
         expect(page).to have_content 'クリーニング'
