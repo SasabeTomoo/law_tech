@@ -80,7 +80,7 @@
               <%= datail.text_field :damage_cost %>
             </div>
           </td>
-          <%= hidden_field_tag :second, true %>
+          <%= hidden_field_tag :second, "true" %>
         <% end %>
         <%= link_to '戻る', edit_transaction_path(@transaction.id)  %>
         <div class="actions">
