@@ -13,6 +13,24 @@
   margin-left: 550px;
 }
 
+.button {
+  display: flex;
+  align-items:  center;
+  justify-content: center;
+  margin: 35px auto;
+  padding: 0;
+  height: 60px;
+  max-width: 400px;
+  border-radius: 5px;
+  color: #fff;
+  background: #419eb5;
+  box-shadow: 0.4px 0 #29859c;
+  font-size: 1.7rem;
+  font-weight: bold;
+  border: none;
+  cursor: grab;
+}
+
 #top_logo {
   font-size: 40px;
   font-family: "serif";
@@ -43,6 +61,7 @@
 
 a {
   color: white;
+  margin-right: 1rem;
 }
 a { text-decoration: none;}
 a:hover { text-decoration: none;}

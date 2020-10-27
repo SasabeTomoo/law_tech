@@ -1,12 +1,30 @@
-<!-- flash.each doは、application.html.erbに記入したいが、国際化エラーがでるためこちらに記載 -->
-<% flash.each do |key, value| %>
- <%= content_tag(:div, value, class: "#{key}") %>
-<% end %>
-<h1>Log in</h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
-<% end %>
+<div id="B">
+  <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <div id="now_mark"></div>
+  <h5 id="now">　Sign up</h5>
+  <h5 id="future">　文書作成の説明</h5>
+  <h5 id="future">　取引内容の入力</h5>
+  <h5 id="future">　敷金精算書の入力</h5>
+  <h5 id="future">　通常損耗チェック</h5>
+  <h5 id="future">　負担範囲チェック</h5>
+  <h5 id="future">　経年劣化チェック</h5>
+  <h5 id="future">　確認画面</h5>
+  <h5 id="future">　ダウンロード</h5>
+  <h5 id="question">よくある質問</h5>
+ </div>
+</div>
+
+<div id="C">
+  <!-- flash.each doは、application.html.erbに記入したいが、国際化エラーがでるためこちらに記載 -->
+  <% flash.each do |key, value| %>
+   <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+  <h1>Log in</h1>
+  <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "Log in" %>
+  <% end %>
+</div>

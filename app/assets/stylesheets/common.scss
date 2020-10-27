@@ -73,3 +73,30 @@ footer {
 .icon_image {
   height: 6rem;
 }
+
+.btn {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.common_btn {
+  color: black;
+  padding: 0.5rem 1.2rem;
+  // color: bl; blue
+  border: 1px solid;
+  background-image:linear-gradient(-45deg, #dfdfdf 25%, #ffffff 25%, #ffffff 50%, #dfdfdf 50%, #dfdfdf 75%, #ffffff 75%, #ffffff);
+  background-size: 4rem 4rem;
+
+  &:active {
+    filter: none;
+    transform: translateY(0.2rem);
+  }
+}
+
+.new_order_form_submit {
+  text-align: center;
+}
+
+.new_order_form_submit .new_order_form_btn {
+  padding: 0.7rem 3rem;
+}

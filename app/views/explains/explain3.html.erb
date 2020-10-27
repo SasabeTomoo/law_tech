@@ -23,10 +23,10 @@
   <h5>（実物を参考にしたものをもってくる。また、チェックポイントを矢印で記載する）</h5>
   <div class="image1"><%= image_tag 'meisai.png', size: "300x300"%></div>
   <% if @transaction == nil %>
-  <div class="fusen1"><%= link_to "次へ（新規）", new_transaction_path %></div>
+  <div class="new_order_form_submit btn common_btn btn_shadow_dark"><%= link_to "次へ（新規）", new_transaction_path, class: 'btn common_btn btn_shadow_dark' %></div>
   <% end %>
   <% if @transaction != nil %>
-  <div class="fusen1"><%= link_to "次へ（編集）", edit_transaction_path(@transaction.id) %></div>
+  <div class="new_order_form_submit"><%= link_to "次へ（編集）", edit_transaction_path(@transaction.id), class: 'btn common_btn btn_shadow_dark' %></div>
   <% end %>
   <div class="fusen3"><%= link_to "戻る", explain2_path %></div>
 </div>

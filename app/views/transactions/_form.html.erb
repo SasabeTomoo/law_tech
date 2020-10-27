@@ -76,9 +76,9 @@
     <%= form.label :通知書を送付する予定日 %>
     <%= form.date_field :make_date %>
   </div>
-  <div class="actions">
-    <%= form.submit "登録（次へ）" %>
-    <div class="fusen3"><%= link_to "戻る", explain3_path %></div>
+  <div class="new_order_form_submit">
+    <%= form.submit "登録（次へ）", class: 'btn common_btn btn_shadow_dark' %>
   </div>
+    <div class="fusen3"><%= link_to "戻る", explain3_path %></div>
 <% end %>
 </div>

@@ -1,22 +1,40 @@
-<h1>Sign up</h1>
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "個のエラー") %> が発生して登録できません <%= @user.name %> :</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "Create my account" %>
-<% end %>
+<div id="B">
+  <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <div id="now_mark"></div>
+  <h5 id="now">　Sign up</h5>
+  <h5 id="future">　文書作成の説明</h5>
+  <h5 id="future">　取引内容の入力</h5>
+  <h5 id="future">　敷金精算書の入力</h5>
+  <h5 id="future">　通常損耗チェック</h5>
+  <h5 id="future">　負担範囲チェック</h5>
+  <h5 id="future">　経年劣化チェック</h5>
+  <h5 id="future">　確認画面</h5>
+  <h5 id="future">　ダウンロード</h5>
+  <h5 id="question">よくある質問</h5>
+ </div>
+</div>
+
+<div id="C">
+  <h1>Sign up</h1>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "個のエラー") %> が発生して登録できません <%= @user.name %> :</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit "Create my account" %>
+  <% end %>
+</div>
