@@ -10,35 +10,38 @@
 
 <div id="B">
   <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <div id="ok_mark"></div>
   <h5>　Sign up</h5>
+  <div id="ok_mark"></div>
   <h5>　文書作成の説明</h5>
+  <div id="ok_mark"></div>
   <h5>　取引内容の入力</h5>
+  <div id="ok_mark"></div>
   <h5>　敷金精算書の入力</h5>
-  <h5>　通常損耗のチェック</h5>
-  <h5>　負担範囲のチェック</h5>
-  <h5>　経年劣化のチェック</h5>
-  <h5 id="now">　敷金返還額の確認画面</h5>
-  <h5>　文書のダウンロード</h5>
-  <h5 id="question">よくある質問（Q&A）</h5>
+  <div id="ok_mark"></div>
+  <h5>　通常損耗チェック</h5>
+  <div id="ok_mark"></div>
+  <h5>　負担範囲チェック</h5>
+  <div id="ok_mark"></div>
+  <h5>　経年劣化チェック</h5>
+  <div id="now_mark"></div>
+  <h5 id="now">　確認画面</h5>
+  <div id="now_mark"></div>
+  <h5 id="now">　文書ダウンロード</h5>
+  <h5 id="question">よくある質問</h5>
  </div>
 </div>
 
 <div id="C">
-  <div class="fusen5">
+  <h4>
     これまでに記入した内容を確認してね。
-  </div>
-  <div class="fusen5">
+  </h4>
+  <h4>
     最後の「経年劣化反映後の金額」が、あなたの考える最終的な「原状回復工事の費用」になるよ、確認してね。
-  </div>
-  <div class="fusen5">
+  </h4>
+  <h4>
     入力したり値を更新した場合は、「更新する」ボタンを押してね。
-  </div>
-  <div>
-    <%= link_to '通知書をダウンロード！', pdf_download_path, :target=>["_blank"] %>
-  </div>
-  <div class="fusen52">
-    項目を入れないこともできるけど、かなりシンプルな書面になるよ
-  </div>
+  </h4>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
     <table class="table">
@@ -93,29 +96,35 @@
           </td>
           <%= hidden_field_tag :fourth, true %>
         <% end %>
-        <%= link_to '戻る', fourth_path %>
+        </table>
         <div class="actions">
           <%= form.submit %>
         </div>
+        <div class="fusen1">
+          <%= link_to 'ダウンロード', pdf_download_path, :target=>["_blank"] %>
+        </div>
+        <div class="fusen3"><%= link_to '戻る', fourth_path %></div>
       <% end %>
-    </table>
+<div class="side box2">
   <div>
-    敷金の預け額<%= @transactions.deposit_amount %>円
+    ・敷金の預け額<%= @transactions.deposit_amount %>円
   </div>
-
   <% if @cost_amount >0 %>
-    <div>精算される限度額<%= @degradation_cost_amount %>円（上の表の結果より）</div>
+    <div>・精算される限度額<%= @degradation_cost_amount %>円（上の表の結果より）</div>
   <% end %>
 
   <div>
-    返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円
-  </div>
-  <div>
-    うち、既に返還済みの金額<%= @transactions.return_deposit %>円
-  </div>
-  <div class="fusen8">
-    返還を求める敷金の金額（結論）<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円
-  </div>
-    <%= image_tag 'confirm.png', size: "300x200"%>
+    <div>
+      ・返還されるべき敷金の金額<%= @transactions.deposit_amount - @degradation_cost_amount %>円
+    </div>
+    <div>
+      ・うち、既に返還済みの金額<%= @transactions.return_deposit %>円
+    </div>
+    <div class="fusen8 side">
+      ・返還を求める敷金の金額（結論）<%= @transactions.deposit_amount - @degradation_cost_amount - @transactions.return_deposit %>円
+    </div>
   </div>
 </div>
+</div>
+</div>
+    <%= image_tag 'confirm.png', size: "300x200"%>

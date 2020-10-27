@@ -1,36 +1,43 @@
 
 <div id="B">
   <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
+  <div id="ok_mark"></div>
   <h5>　Sign up</h5>
+  <div id="ok_mark"></div>
   <h5>　文書作成の説明</h5>
+  <div id="ok_mark"></div>
   <h5>　取引内容の入力</h5>
+  <div id="ok_mark"></div>
   <h5>　敷金精算書の入力</h5>
-  <h5>　通常損耗のチェック</h5>
-  <h5>　負担範囲のチェック</h5>
-  <h5 id="now">　経年劣化のチェック</h5>
-  <h5>　敷金返還額の確認画面</h5>
-  <h5>　文書のダウンロード</h5>
-  <h5 id="question">よくある質問（Q&A）</h5>
+  <div id="ok_mark"></div>
+  <h5>　通常損耗チェック</h5>
+  <div id="ok_mark"></div>
+  <h5>　負担範囲チェック</h5>
+  <div id="now_mark"></div>
+  <h5 id="now">　経年劣化チェック</h5>
+  <h5 id="future">　確認画面</h5>
+  <h5 id="future">　文書ダウンロード</h5>
+  <h5 id="question">よくある質問</h5>
  </div>
 </div>
 
 <div id="C">
   <%= image_tag 'year.png', size: "800x400"%>
-  <div class="fusen5">
+  <h4>
     「前のstep反映後金額」に値が入っているものだけ、経年劣化を考えてみよう
-  </div>
-  <div class="fusen5">
+  </h4>
+  <h4>
     「経過年数」は、基本的に、あなたの入居年数となるよ。また、耐用年数などの具体例は下を見てね（後に記載予定）
-  </div>
-  <div class="fusen5">
+  </h4>
+  <h4>
     「経年劣化」を取り入れる場合は、次の計算をして、「金額（反映後）」に入れてね。そうでない場合は、「前のstep反映後金額」と「金額（反映後）」を同じ金額にしてね。
-  </div>
-  <div class="fusen5">
+  </h4>
+  <h4>
     「金額（反映後）」=「前のstep反映後金額」÷「耐用年数」✖️（耐用年数　-　経過年数）✖️借りた当初の価値（例.80%など）
-  </div>
-  <div class="fusen52">
+  </h4>
+  <h4>
     項目を入れないこともできるけど、かなりシンプルな書面になるよ
-  </div>
+  </h4>
   <%= form_with(model: @adjustment, local: true ) do |form| %>
   <table class="table">
     <thead>
@@ -95,10 +102,11 @@
         </td>
         <%= hidden_field_tag :fourth, true %>
       <% end %>
-      <%= link_to '戻る', third_path %>
-      <div class="actions">
-        <%= form.submit %>
-    <% end %>
     </div>
   </table>
+      <div class="actions">
+        <%= form.submit "登録（次へ）" %>
+      </div>
+      <div class="fusen3"><%= link_to '戻る', third_path %></div>
+    <% end %>
 </div>

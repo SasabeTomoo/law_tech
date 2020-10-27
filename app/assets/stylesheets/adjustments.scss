@@ -4,16 +4,48 @@
   background-color: #596dd9;
 }
 #question {
+  height:27px;
   color: white;
   background-color:  rgb(1, 13, 1);
+  padding-left: 15px;
 }
+
 #now {
-  background-color: rgb(205, 238, 57);
+  color: red;
+  // background: linear-gradient(transparent 50%, #a8eaff 50%);
+  border-bottom: dotted 2px #f11717;
+  // border-bottom: solid 3px #eb1919;
 }
+
+#ok_mark {
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid #25AF01;
+  border-bottom: 2px solid #25AF01;
+  transform: rotate(-45deg);
+  float: left;
+  margin-top: 5px;
+}
+
+#now_mark {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  margin-left: 4px;
+  border: transparent solid 5px;
+  border-left-color: #f00;
+  vertical-align: 4px;
+  float: left;
+  margin-top: 5px;
+}
+
+
 #future {
   height:27px;
   margin-bottom: 23px;
   margin-top: 23px;
+  margin-left: 15px;
   background-color: rgb(216, 226, 228);
   width: 150px;
 }
@@ -42,6 +74,17 @@
   top: 0;
   left: 0;
   }
+
+  .box2 {
+      padding: 0.5em 1em;
+      margin: 2em 1em;
+      font-weight: bold;
+      color: #6091d3;/*文字色*/
+      background: #FFF;
+      border: solid 3px #6091d3;/*線*/
+      border-radius: 10px;/*角の丸み*/
+  }
+
 .fusen1 {
   margin-top:20px;
   margin-bottom:20px;
@@ -110,9 +153,10 @@
   background-color: rgb(255, 203, 102);
 }
 .fusen8 {
-  color:white;
-  width:400px;
-  background-color: rgb(227, 49, 17);
+  width:350px;
+  border-bottom: solid 3px #eb1919;
+  // background: linear-gradient(transparent 70%, #ffa8a8 30%);
+
 }
 .column {
   font-size:13px;
