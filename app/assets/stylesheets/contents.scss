@@ -1,3 +1,13 @@
+.side {
+  /* 浮かせて左に寄せる */
+  float:left;
+  right:0px;
+}
+
+.top {
+    top: 500px;
+}
+
 .right {
   font-size: 20px;
   margin-left: 550px;
@@ -6,6 +16,7 @@
 #top_logo {
   font-size: 40px;
   font-family: "serif";
+  margin-left: 20px;
 }
 
 .mypage_image {
@@ -35,3 +46,8 @@ a {
 }
 a { text-decoration: none;}
 a:hover { text-decoration: none;}
+
+.red_font {
+  color: red;
+  font-size: 16px;
+}

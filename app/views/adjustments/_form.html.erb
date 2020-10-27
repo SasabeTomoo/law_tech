@@ -14,16 +14,16 @@
 </div>
 
 <div id="C">
-  <div class="fusen3"><%= link_to "戻る", edit_transaction_path %></div>
-  <h3>敷金精算書の入力</h3>
+  <div  class="side">
   <h4>次に、敷金精算書の内容を入力していきましょう</h4>
-  <div class="fusen2">敷金精算書の項目ごとに工事等の名前と金額だけ入力してください</div>
+  <h4>敷金精算書の項目ごとに工事等の名前と金額だけ入力しよう</h4>
   <h5>あとで明細書の画像等整える</h5>
-  <div class="fusen52">
-    項目を入れないこともできるけど、かなりシンプルな書面になるよ
-  </div>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
+    <div class="actions">
+      <%= form.submit "登録（次へ）" %>
+    </div>
+    <div class="fusen3"><%= link_to "戻る", edit_transaction_path %></div>
       <% if @adjustment.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@adjustment.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -62,12 +62,16 @@
             </div>
           </td>
         <% end %>
-        <%= link_to '戻る', edit_transaction_path(@transaction.id)  %>
-        <div class="actions">
-          <%= form.submit %>
-        </div>
       <% end %>
     </table>
+  </div>
+</div>
+
+  <div class="side">
+    <!-- <%= image_tag 'left.png', size: "50x50" %> -->
+  </div>
+  <div class="">
+    <%= image_tag 'meisai.png', size: "200x250" %>
   </div>
   <div class="image1">
     <%= image_tag 'explain2.png', size: "500x250"%>
