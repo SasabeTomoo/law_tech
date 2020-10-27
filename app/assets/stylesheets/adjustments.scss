@@ -1,25 +1,4 @@
-#B{
-width:150px;
-min-height:500px;
-height:auto;
-float:left;
-margin-top:10px;
-margin-left: 20px;
-}
-#C {
-margin-left:260px;
-width:720px;
-min-height:500px;
-height:auto;
-margin-top:10px;
-}
-#D {
-width:250px;
-min-height:500px;
-height:auto;
-float:right;
-margin-top:10px;
-}
+
 #sidetitle {
   color: white;
   background-color: rgb(164, 198, 16);
@@ -31,20 +10,31 @@ margin-top:10px;
 #now {
   background-color: rgb(205, 238, 57);
 }
-header {
-  width:1300px;
-  padding-bottom: -20px;
-  padding-left: 20px;
-  background-color: rgb(205, 238, 57);
+// header {
+//   width:1300px;
+//   padding-bottom: -20px;
+//   padding-left: 20px;
+//   background-color: rgb(205, 238, 57);
+// }
+// footer {
+//   // position: absolute; bottom: 0;
+//   width:1300px;
+//   background-color: rgb(205, 238, 57);
+//   min-height:70px;
+//   margin-top:10px;
+//   padding-left: 20px;
+// }
+.top_image {
+  position: relative;
+  margin-top: 70px;
+  margin-left: 10px;
 }
-footer {
-  // position: absolute; bottom: 0;
-  width:1300px;
-  background-color: rgb(205, 238, 57);
-  min-height:70px;
-  margin-top:10px;
-  padding-left: 20px;
-}
+.top_image p {
+  position: absolute;/*絶対配置*/
+  color: blue;/*文字は白に*/
+  top: 0;
+  left: 0;
+  }
 .fusen1 {
   margin-top:20px;
   margin-bottom:20px;
@@ -52,6 +42,7 @@ footer {
   font-size:20px;
   width:200px;
   background-color: rgb(16, 223, 186);
+  filter: drop-shadow(0.1rem 0.3rem 0.2rem #524f4d);
 }
 .fusen2 {
   margin-top:20px;
@@ -68,6 +59,7 @@ footer {
   font-size:20px;
   width:200px;
   background-color: rgb(255, 203, 102);
+  filter: drop-shadow(0.1rem 0.3rem 0.2rem #524f4d);
 }
 .fusen4 {
   margin-top:20px;
@@ -121,8 +113,4 @@ footer {
 .column_last {
   font-size:13px;
   background-color: rgb(255, 203, 102);
-}
-.image1 {
-  margin-top: 70px;
-  margin-left: 10px;
 }

@@ -1,0 +1,37 @@
+.right {
+  font-size: 20px;
+  margin-left: 550px;
+}
+
+#top_logo {
+  font-size: 40px;
+  font-family: "serif";
+}
+
+.mypage_image {
+  width: 60rem;
+  // transform: rotate(1deg);
+  // filter: drop-shadow(0.1rem 0.3rem 0.2rem #524f4d);
+}
+
+.mypage_tape_image {
+  width: 700px;
+  height: 300px;
+  position: absolute;
+  top: -35px;
+  left: 200px;
+}
+
+.vertical_line {
+  width: 1px;
+  height: 1rem;
+  margin: 1rem;
+  background-color: rgb(6, 75, 72);
+  color:white;
+}
+
+a {
+  color: white;
+}
+a { text-decoration: none;}
+a:hover { text-decoration: none;}
