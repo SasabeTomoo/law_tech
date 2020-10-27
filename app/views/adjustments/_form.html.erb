@@ -20,10 +20,6 @@
   <h5>あとで明細書の画像等整える</h5>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
-    <div class="actions">
-      <%= form.submit "登録（次へ）" %>
-    </div>
-    <div class="fusen3"><%= link_to "戻る", edit_transaction_path %></div>
       <% if @adjustment.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@adjustment.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -62,9 +58,13 @@
             </div>
           </td>
         <% end %>
+      </table>
+    </div>
+        <div class="actions">
+          <%= form.submit "登録（次へ）" %>
+        </div>
+        <div class="fusen3"><%= link_to "戻る", edit_transaction_path(@transaction.id) %></div>
       <% end %>
-    </table>
-  </div>
 </div>
 
   <div class="side">

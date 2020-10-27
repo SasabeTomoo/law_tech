@@ -65,19 +65,19 @@
             </div>
           </td>
         <% end %>
-        <%= link_to '戻る', edit_adjustment_path(@adjustment.id)  %>
+      </table>
+    </div>
         <div class="actions">
-          <%= form.submit %>
+          <%= form.submit "登録（次へ）" %>
         </div>
+        <div class="fusen3"><%= link_to '戻る', edit_adjustment_path(@adjustment.id)  %></div>
       <% end %>
-    </table>
-  </div>
-
+  <h4>具体例を検索してね</h4>
   <div>
     <p id="notice"><%= notice %></p>
     <%= form_with( model: @damages, method: :get, local: true ) do |form| %>
     <div class="content">
-      <p class="fusen2">具体例の検索<div><%= form.select :search, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: 'カテゴリーを選択してください'}, { class: 'form-control' } %></div></p>
+      <div><%= form.select :search, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: 'カテゴリーを選択してください'}, { class: 'form-control' } %>
     </div>
       <%= form.submit '検索', name: nil%>
       <% end %>
@@ -109,4 +109,5 @@
       <% end %>
     </table>
   </div>
+</div>
 </div>

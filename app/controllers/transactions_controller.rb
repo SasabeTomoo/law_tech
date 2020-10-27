@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
     @transaction.user_id = current_user.id
     # labelling = @transaction.labellings.create(label_id: params[:label_ids])
     if @transaction.save
-      redirect_to new_adjustment_url(@transaction.id), notice: "登録しました"
+      redirect_to new_adjustment_url, notice: "登録しました"
     else
       render :new
     end
@@ -25,7 +25,8 @@ class TransactionsController < ApplicationController
   end
   def update
     if @transaction.update(transaction_params)
-      redirect_to edit_adjustment_url(@transaction.id), notice: "編集しました"
+      @adjustment = Adjustment.where(user_id:current_user.id).last
+      redirect_to edit_adjustment_url(@adjustment.id), notice: "編集しました"
     else
       render :edit
     end

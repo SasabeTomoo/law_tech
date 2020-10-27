@@ -15,27 +15,11 @@
 
 <div id="C">
   <%= image_tag 'burden.png', size: "700x300"%>
-  <div class="fusen5">
-    過大な工事費用は負担する必要はないよ
-  </div>
-  <div class="fusen5">
-    過大な工事費用かどうかの判断は、下の具体例を読んでね（後に記載予定）
-  </div>
-  <div class="fusen5">
-    工事の負担範囲が過大と思った場合は、「金額（反映後）」にあなたの正しい金額を入れてね。そうでない場合は、「前のstep反映後金額」と「金額（反映後）」を同じ金額にしてね。
-  </div>
-  <div class="fusen5">
-    「金額（反映後）」に正しい金額を入れた場合は、「理由」も入力してね。
-  </div>
-  <div>
-
-  </div>
-  <div>
-
-  </div>
-  <div class="fusen52">
-    項目を入れないこともできるけど、かなりシンプルな書面になるよ
-  </div>
+  <h5>過大な工事費用は負担する必要はないよ</h5>
+  <h5>過大な工事費用かどうかの判断は、下の具体例を読んでね（後に記載予定）</h5>
+  <h5>工事の負担範囲が過大と思った場合は、「金額（反映後）」にあなたの正しい金額を入れてね。そうでない場合は、「前のstep反映後金額」と「金額（反映後）」を同じ金額にしてね。
+  </h5>
+  <h5>「金額（反映後）」に正しい金額を入れた場合は、「理由」も入力してね。</h5>
   <div>
     <%= form_with(model: @adjustment, local: true ) do |form| %>
     <table class="table">
@@ -102,11 +86,11 @@
           </td>
           <%= hidden_field_tag :third, true %>
         <% end %>
-        <%= link_to '戻る', second_path %>
-        <div class="actions">
-          <%= form.submit %>
-        </div>
+      </table>
+    </div>
+    <div class="actions">
+      <%= form.submit "登録（次へ）" %>
+    </div>
+    <div class="fusen3"><%= link_to '戻る', second_path %></div>
       <% end %>
-    </table>
-  </div>
 </div>

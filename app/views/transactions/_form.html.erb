@@ -18,10 +18,6 @@
 <h4>まずは前提となる取引内容を記入していきましょう</h4>
 
 <%= form_with(model: @transaction, local: true) do |form| %>
-<div class="actions">
-  <%= form.submit "登録（次へ）" %>
-  <div class="fusen3"><%= link_to "戻る", explain3_path %></div>
-</div>
   <% if @transaction.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@transaction.errors.count, "個のエラー") %> が発生して登録できません:</h2>
@@ -76,6 +72,10 @@
   <div class="field">
     <%= form.label :通知書を送付する予定日 %>
     <%= form.date_field :make_date %>
+  </div>
+  <div class="actions">
+    <%= form.submit "登録（次へ）" %>
+    <div class="fusen3"><%= link_to "戻る", explain3_path %></div>
   </div>
 <% end %>
 </div>

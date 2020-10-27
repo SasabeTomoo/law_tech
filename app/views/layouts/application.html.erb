@@ -16,11 +16,10 @@
     <!-- <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %> -->
+    <div class="right">
     <% if logged_in? %>
       <!-- <%= link_to "Profile", user_path(current_user.id) %> -->
-      <div class="right">
         <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      </div>
       <!-- <%= link_to "説明", explain1_path %>
       <%= link_to "取引内容の入力", new_transaction_path %>
       <%= link_to "敷金精算書の入力", new_adjustment_path %>
@@ -33,6 +32,7 @@
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
     <% end %>
+  </div>
   </header>
   <body>
     <%= yield %>
