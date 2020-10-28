@@ -1,3 +1,5 @@
+<% @transaction = Transaction.where(user_id:current_user.id).last %>
+
 <div id="B">
   <h5 id="sidetitle">敷金返還請求　　　　　文書作成</h5>
   <div id="ok_mark"></div>
@@ -6,24 +8,31 @@
   <h5 id="now">　文書作成の説明</h5>
   <h5 id="future">　取引内容の入力</h5>
   <h5 id="future">　敷金精算書の入力</h5>
-  <h5 id="future">　通常損耗のチェック</h5>
-  <h5 id="future">　負担範囲のチェック</h5>
-  <h5 id="future">　経年劣化のチェック</h5>
-  <h5 id="future">　敷金返還額の確認画面</h5>
-  <h5 id="future">　文書のダウンロード</h5>
+  <h5 id="future">　通常損耗チェック</h5>
+  <h5 id="future">　負担範囲チェック</h5>
+  <h5 id="future">　経年劣化チェック</h5>
+  <h5 id="future">　確認画面</h5>
+  <h5 id="future">　ダウンロード</h5>
   <h5 id="question">よくある質問</h5>
  </div>
 </div>
 
 <div id="C">
-  <h3>敷金返還のポイント</h3>
-  <h4>敷金返還のポイントは、「敷金精算書」の「工事の費用」の金額を少なくすることです。その時のポイントは、次の①〜③です</h4>
-  <ul>
-    <li>①通常損耗 ：通常想定される使用による損耗等は、負担しなくて良い</li>
-    <li>②経年劣化 ：通常外の使用による損傷等でも、全額までは負担しなくて良い</li>
-    <li>③負担範囲 ：過大な工事費は、負担しなくて良い</li>
-  </ul>
-  <div class="image1"><%= image_tag 'explain1.png', size: "900x300"%></div>
-  <div class="fusen1"><%= link_to "次へ", explain3_path %></div>
-  <div class="fusen3"><%= link_to "戻る", explain1_path %></div>
-</div>
+  <h4>まずは、大家さん（賃貸人）に頼んで、敷金の精算書をもらいましょう</h4>
+  <h4>たとえば、敷金精算書は、次の画像のようなものになります</h4>
+  <h5>（実物を参考にしたものをもってくる）</h5>
+  <h4>①通常損耗、②経年劣化、③負担範囲というポイントでみていきましょう</h4>
+  <div class="image1"><%= image_tag 'meisai.png', size: "300x300"%></div>
+
+  <% if @transaction == nil %>
+  <div class="new_order_form_submit"><%= link_to "次へ（新規）　", new_transaction_path, class: 'btn common_btn btn_shadow_dark' %></div>
+  <% end %>
+  <% if @transaction != nil %>
+  <div class="new_order_form_submit"><%= link_to "次へ（編集）　", edit_transaction_path(@transaction.id), class: 'btn common_btn btn_shadow_dark' %></div>
+  <% end %>
+  <div class="new_order_form_submit"><%= link_to "前のステップへ", explain1_path, class: 'btn common_btn btn_shadow_dark' %></div>
+  </div>
+  <!--
+  <div class="new_order_form_submit"><%= link_to "次のステップへ", explain4_path, class: 'btn common_btn btn_shadow_dark' %></div>
+  <div class="new_order_form_submit"><%= link_to "前のステップへ", explain1_path, class: 'btn common_btn btn_shadow_dark' %></div>
+</div> -->

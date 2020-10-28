@@ -26,7 +26,11 @@ class TransactionsController < ApplicationController
   def update
     if @transaction.update(transaction_params)
       @adjustment = Adjustment.where(user_id:current_user.id).last
+      if @adjustment == nil
+        redirect_to new_adjustment_url
+      else
       redirect_to edit_adjustment_url(@adjustment.id), notice: "編集しました"
+      end
     else
       render :edit
     end
