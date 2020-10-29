@@ -8,6 +8,10 @@ class SamplesController < ApplicationController
     Sample.import(params[:file])
     redirect_to samples_url
   end
+  def destroy
+    Sample.destroy_all
+    redirect_to samples_url, notice:"削除しました"
+  end
 
   private
   def set_user

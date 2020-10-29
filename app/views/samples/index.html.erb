@@ -25,6 +25,8 @@
 <%= form_tag import_samples_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "インポート" %>
+  <div class="new_order_form_submit2"><%= link_to '全て削除', sample_path(@samples), method: :delete, class: 'btn common_btn btn_shadow_dark' %><div>  
+  </div>
 <% end %>
 <div class="fusen52">
   拡張子.csv以外だとエラーになります
