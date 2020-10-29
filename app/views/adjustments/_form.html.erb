@@ -64,10 +64,10 @@
         <% end %>
       </table>
     </div>
-        <div class="actions">
-          <%= form.submit "登録（次へ）" %>
+        <div class="new_order_form_submit">
+          <%= form.submit "登録（次へ）　", class: 'btn common_btn btn_shadow_dark' %>
         </div>
-        <div class="fusen3"><%= link_to "戻る", edit_transaction_path(@transaction.id) %></div>
+        <div class="new_order_form_submit"><%= link_to "前のステップへ", edit_transaction_path(@transaction.id), class: 'btn common_btn btn_shadow_dark' %></div>
       <% end %>
 </div>
 

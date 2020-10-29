@@ -1,3 +1,12 @@
+#A{
+  position: relative;
+  margin-left:260px;
+  width:720px;
+  min-height:20px;
+  height:auto;
+  margin-top:10px;
+}
+
 #B{
 width:150px;
 min-height:500px;
@@ -99,6 +108,12 @@ footer {
 .new_order_form_submit {
   text-align: center;
   margin-bottom: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.new_order_form_submit2 {
+  margin-bottom: 1.2rem;
+  margin-top: 1.2rem;
 }
 
 .new_order_form_submit .new_order_form_btn {

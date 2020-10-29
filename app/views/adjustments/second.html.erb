@@ -72,19 +72,21 @@
         <% end %>
       </table>
     </div>
-        <div class="actions">
-          <%= form.submit "登録（次へ）" %>
+        <div class="new_order_form_submit">
+          <%= form.submit "登録（次へ　）", class: 'btn common_btn btn_shadow_dark' %>
         </div>
-        <div class="fusen3"><%= link_to '戻る', edit_adjustment_path(@adjustment.id)  %></div>
+        <div class="new_order_form_submit"><%= link_to '前のステップへ', edit_adjustment_path(@adjustment.id), class: 'btn common_btn btn_shadow_dark'  %></div>
       <% end %>
-  <h4>具体例を検索してね</h4>
+
   <div>
     <p id="notice"><%= notice %></p>
     <%= form_with( model: @damages, method: :get, local: true ) do |form| %>
     <div class="content">
       <div><%= form.select :search, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: 'カテゴリーを選択してください'}, { class: 'form-control' } %>
     </div>
-      <%= form.submit '検索', name: nil%>
+    <div class="new_order_form_submit2">
+      <%= form.submit '検索', name: nil, class: 'btn common_btn btn_shadow_dark'%>
+    </div>
       <% end %>
   </div>
   <div>

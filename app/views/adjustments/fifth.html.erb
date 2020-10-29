@@ -97,13 +97,13 @@
           <%= hidden_field_tag :fourth, true %>
         <% end %>
         </table>
-        <div class="actions">
-          <%= form.submit %>
+        <div class="new_order_form_submit">
+          <%= form.submit "更新（画面内）", class: 'btn common_btn btn_shadow_dark' %>
         </div>
-        <div class="fusen1">
-          <%= link_to 'ダウンロード', pdf_download_path, :target=>["_blank"] %>
+        <div class="new_order_form_submit">
+          <%= link_to 'ダウンロード', pdf_download_path, :target=>["_blank"] , class: 'btn common_btn btn_shadow_dark'%>
         </div>
-        <div class="fusen3"><%= link_to '戻る', fourth_path %></div>
+        <div class="new_order_form_submit"><%= link_to '前のステップへ', fourth_path, class: 'btn common_btn btn_shadow_dark' %></div>
       <% end %>
 <div class="side box2">
   <div>
