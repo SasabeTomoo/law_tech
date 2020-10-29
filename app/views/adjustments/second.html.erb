@@ -80,7 +80,11 @@
 
   <div>
     <div id="now_mark"></div>
-    <div id="now2">表示中のカテゴリー：<%= @samples.last.category %></div>
+      <% if params[:search].present? %>
+        <div id="now2">表示中のカテゴリー：<%= @samples.last.category %></div>
+      <% else %>
+        <div id="now2">表示中のカテゴリー：1.床（畳、フローリング、カーペットなど）</div>
+      <% end %>
     <%= form_with( model: @damages, method: :get, local: true ) do |form| %>
     <div class="content">
       <div class="select"><%= form.select :search, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: 'カテゴリーを選択してください'}, { class: 'form-control' } %>

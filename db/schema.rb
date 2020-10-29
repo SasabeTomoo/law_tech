@@ -17,26 +17,8 @@ ActiveRecord::Schema.define(version: 2020_10_29_070501) do
 
   create_table "adjustments", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "item"
-    t.integer "cost"
-    t.text "category"
-    t.integer "cost_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "damage_reason"
-    t.integer "damage_cost"
-    t.float "rent_quantity"
-    t.float "my_quantity"
-    t.string "unit"
-    t.text "burden_reason"
-    t.float "burden_percentage"
-    t.integer "burden_cost"
-    t.string "equipment_name"
-    t.float "service_year"
-    t.float "first_value"
-    t.float "rent_year"
-    t.float "de_burden_percentage"
-    t.integer "degradation_cost"
     t.string "second"
     t.string "third"
     t.string "fourth"
@@ -84,11 +66,9 @@ ActiveRecord::Schema.define(version: 2020_10_29_070501) do
     t.string "user_name"
     t.text "user_adress"
     t.string "account"
-    t.time "contact_date"
     t.text "rent_adress"
     t.string "rent_name"
     t.integer "deposit_amount"
-    t.time "return_date"
     t.text "destination"
     t.string "deadline"
     t.datetime "created_at", null: false
