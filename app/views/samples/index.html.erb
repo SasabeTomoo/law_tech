@@ -6,7 +6,8 @@
       <th>ID</th>
       <th>カテゴリー</th>
       <th>区分（通常or通常外）</th>
-      <th>内容</th>
+      <th>具体例</th>
+      <th>考え方</th>
     </tr>
   </thead>
 
@@ -17,6 +18,7 @@
         <td><%= sample.category %></td>
         <td><%= sample.field %></td>
         <td><%= sample.content %></td>
+        <td><%= sample.reason %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,7 +27,7 @@
 <%= form_tag import_samples_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "インポート" %>
-  <div class="new_order_form_submit2"><%= link_to '全て削除', sample_path(@samples), method: :delete, class: 'btn common_btn btn_shadow_dark' %><div>  
+  <div class="new_order_form_submit2"><%= link_to '全て削除', sample_path(@samples), method: :delete, class: 'btn common_btn btn_shadow_dark' %><div>
   </div>
 <% end %>
 <div class="fusen52">

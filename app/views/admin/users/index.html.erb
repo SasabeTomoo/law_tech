@@ -2,7 +2,7 @@
 <h2>具体例のインポート</h2>
 <div class="new_order_form_submit2"><%= link_to "インポート", samples_path, class: 'btn common_btn btn_shadow_dark' %></div>
 <h2>ユーザー関係</h2>
-<div class="new_order_form_submit2"><%= link_to 'user管理　', new_admin_user_path, class: 'btn common_btn btn_shadow_dark' %></div>
+<!-- <div class="new_order_form_submit2"><%= link_to 'user管理　', new_admin_user_path, class: 'btn common_btn btn_shadow_dark' %></div> -->
 <table>
   <tr>
     <th>id</th>
@@ -19,8 +19,8 @@
    <td class="users"><%= user.name %></td>
    <!-- <td class="users"><%= Adjustment.where(user_id:user).size %></td> -->
    <td class="users"><%= user.admin %></td>
-   <td><%= link_to "[userを編集する]", edit_admin_user_path(user.id) %></td>
-   <td><%= link_to '[userを削除する]', admin_user_path(user.id), method: :delete ,data: { confirm: '本当に削除していいですか？'} %></td>
+   <td class="new_order_form_submit2"><%= link_to "編集する", edit_admin_user_path(user.id), class: 'btn common_btn2 btn_shadow_dark' %></td>
+   <td class="new_order_form_submit2"><%= link_to '削除する', admin_user_path(user.id), method: :delete , class: 'btn common_btn2 btn_shadow_dark', data: { confirm: '本当に削除していいですか？'} %></td>
  </tr>
 <% end %>
 </table>

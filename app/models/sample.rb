@@ -12,6 +12,6 @@ class Sample < ApplicationRecord
 
   # 更新を許可するカラムを定義
   def self.updatable_attributes
-    ["id", "category", "field", "content"]
+    ["id", "category", "field", "content", "reason", "yobi", "yobiyobi"]
   end
 end

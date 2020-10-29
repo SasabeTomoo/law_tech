@@ -3,18 +3,18 @@ User.create!(name:  "管理者",
              password:  "adminsan",
              password_confirmation: "adminsan",
              admin: true)
-
-Sample.create!(
-  category: "1.床（畳、フローリング、カーペットなど）",
-  field: "usual",
-  content: "フローリングワックスがけ"
-)
-
-Sample.create!(
-  category: "1.床（畳、フローリング、カーペットなど）",
-  field: "unusual",
-  content: "たばこによるカーペット損傷"
-)
+#
+# Sample.create!(
+#   category: "1.床（畳、フローリング、カーペットなど）",
+#   field: "usual",
+#   content: "フローリングワックスがけ"
+# )
+#
+# Sample.create!(
+#   category: "1.床（畳、フローリング、カーペットなど）",
+#   field: "unusual",
+#   content: "たばこによるカーペット損傷"
+# )
 
 Sample.create!(
   category: "4.その他",
