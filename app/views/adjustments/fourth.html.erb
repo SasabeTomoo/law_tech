@@ -109,4 +109,45 @@
       </div>
       <div class="new_order_form_submit"><%= link_to '前のステップへ', third_path, class: 'btn common_btn btn_shadow_dark' %></div>
     <% end %>
+    <h3>　</h3>
+    <div class="fusen6">基本的な考え方</div>
+    <div class="box3">
+      <h4>① 財産的価値の復元という観点から、毀損等を与えた部位や設備の経過年数によって、負担割合は変化する。</h4>
+      <h4>② 具体的には、経過年数が多いほど賃借人の負担割合が小さくなるようにする。</h4>
+      <h4>③ 最終残存価値は 1 円とし、賃借人の負担割合は最低 1円となる。</h4>
+    </div>
+
+    <div>
+      <div id="now_mark"></div>
+        <% if params[:search].present? %>
+          <div id="now2">表示中のカテゴリー：<%= @samples.last.category %></div>
+        <% else %>
+          <div id="now2">表示中のカテゴリー：1.床（畳、フローリング、カーペットなど）</div>
+        <% end %>
+      <%= form_with( model: @damages, method: :get, local: true ) do |form| %>
+      <div class="content">
+        <div class="select"><%= form.select :search, {'1.床（畳、フローリング、カーペットなど）': '1.床（畳、フローリング、カーペットなど）', '2.壁、天井': '2.壁、天井', '3.建具等、襖（ふすま）、天井': '3.建具等、襖（ふすま）、柱等', '4.その他': '4.その他'}, { include_blank: 'カテゴリーを選択してください'}, { class: 'form-control' } %>
+      </div>
+      <div class="new_order_form_submit2">
+        <%= form.submit '検索', name: nil, class: 'btn common_btn btn_shadow_dark'%>
+      </div>
+        <% end %>
+    </div>
+    <div>
+      <table class="box4">
+        <div class="fusen7">経過年数の考慮等</div>
+        <tr>
+          <th><div class="title">対象</div></th>
+          <th><div class="title">考慮事項</div></th>
+          <th colspan="3"></th>
+        </tr>
+        <% @usual_samples.each do |usual_sample| %>
+          <tr>
+            <td class="example box_line1"><%= usual_sample.content %></td>
+            <td class="example box_line1"><%= usual_sample.reason %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>

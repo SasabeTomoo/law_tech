@@ -26,12 +26,10 @@ class AdjustmentsController < ApplicationController
     @adjustment = Adjustment.where(user_id:current_user.id).last
     if params[:search].present?
       @samples = Sample.where(category: params[:search])
-      @usual_samples = @samples.where(field: "usual")
-      @unusual_samples = @samples.where(field: "unusual")
+      @usual_samples = @samples.where(field: "deg")
     else
       @samples = Sample.where(category: "1.床（畳、フローリング、カーペットなど）")
-      @usual_samples = @samples.where(field: "usual")
-      @unusual_samples = @samples.where(field: "unusual")
+      @usual_samples = @samples.where(field: "deg")
     end
   end
   def fifth
