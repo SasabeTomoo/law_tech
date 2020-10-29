@@ -1,3 +1,15 @@
+.login_form {
+  height: 100%;
+  margin-top: -35rem;
+  position: relative;
+  z-index: 1;
+}
+
+.short_form, .short_content {
+  padding-top: 8rem;
+}
+
+
 .side {
   /* 浮かせて左に寄せる */
   float:left;

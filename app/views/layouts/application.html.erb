@@ -4,49 +4,43 @@
     <title>LawTech</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <div id="top_logo"><%= link_to "敷金返還サポート", root_path %></div>
-    <!-- <%= image_tag 'kanban.jpg', size: "200x15" %> -->
-    <!-- 以下の理解が足りていないため(ログインシステム10、セッション作成)、一旦、使わない -->
-    <!-- <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %> -->
-    <div class="right">
-    <% if logged_in? %>
-      <!-- <%= link_to "Profile", user_path(current_user.id) %> -->
-        <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <!-- <%= link_to "説明", explain1_path %>
-      <%= link_to "取引内容の入力", new_transaction_path %>
-      <%= link_to "敷金精算書の入力", new_adjustment_path %>
-      <%= link_to "通知書のPDF出力", pdf_download_path %> -->
-      <% if current_user.admin? %>
-      <%= link_to "管理者用", admin_users_path %>
-      <% end %>
-      <!-- <%= link_to "具体例のインポート（管理者用）", samples_path %> -->
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-  </div>
-  </header>
   <body>
-    <%= yield %>
-  </body>
-  <footer>
-    <a>
-    <div class="footer_container">
-      <%= link_to '利用規約' %>
-      <div class="vertical_line"></div>
-      <%= link_to 'お問い合わせ' %>
-      <div class="vertical_line"></div>
-      <%= link_to '素材利用元' %>
+    <div>
+      <header>
+        <div id="top_logo">
+          <%= link_to "敷金返還サポート", root_path %>
+        </div>
+        <div class="right">
+          <% if logged_in? %>
+              <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+            <% if current_user.admin? %>
+            <%= link_to "管理者用", admin_users_path %>
+            <% end %>
+          <% else %>
+            <%= link_to "Sign up", new_user_path %>
+            <%= link_to "Login", new_session_path %>
+          <% end %>
+        </div>
+      </header>
+      <%= yield %>
+
+      <footer>
+        <a>
+          <div class="footer_container">
+            <%= link_to '利用規約' %>
+            <div class="vertical_line"></div>
+            <%= link_to 'お問い合わせ' %>
+            <div class="vertical_line"></div>
+            <%= link_to '素材利用元' %>
+          </div>
+        </a>
+        <p class="copyright">©2020 敷金返還サポート</p>
+      </footer>
     </div>
-    </a>
-    <p class="copyright">©2020 敷金返還サポート</p>
-  </footer>
+  </body>
+
 </html>
