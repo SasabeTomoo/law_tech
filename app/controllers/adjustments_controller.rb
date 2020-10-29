@@ -14,9 +14,25 @@ class AdjustmentsController < ApplicationController
   end
   def third
     @adjustment = Adjustment.where(user_id:current_user.id).last
+    if params[:search].present?
+      @samples = Sample.where(category: params[:search])
+      @usual_samples = @samples.where(field: "burden")
+    else
+      @samples = Sample.where(category: "1.床（畳、フローリング、カーペットなど）")
+      @usual_samples = @samples.where(field: "burden")
+    end
   end
   def fourth
     @adjustment = Adjustment.where(user_id:current_user.id).last
+    if params[:search].present?
+      @samples = Sample.where(category: params[:search])
+      @usual_samples = @samples.where(field: "usual")
+      @unusual_samples = @samples.where(field: "unusual")
+    else
+      @samples = Sample.where(category: "1.床（畳、フローリング、カーペットなど）")
+      @usual_samples = @samples.where(field: "usual")
+      @unusual_samples = @samples.where(field: "unusual")
+    end
   end
   def fifth
     @adjustment = Adjustment.where(user_id:current_user.id).last
